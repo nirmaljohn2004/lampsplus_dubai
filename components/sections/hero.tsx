@@ -1,113 +1,221 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Check } from "lucide-react"
+import { useRef, useState, useEffect, useCallback } from "react"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { ChevronDown, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
-const trustBadges = [
-  "In-house installation team",
-  "Fast delivery across India",
-  "20+ years Dubai experience",
+const heroSlides = [
+  {
+    src: "/images/hero-slide-1.jpg",
+    alt: "Outdoor LED screen installation at a live event venue",
+    tag: "Live Events",
+    headline: "We Power Dubai's\nBiggest Moments",
+    sub: "Premium LED screens for events, retail, stadiums & more.",
+  },
+  {
+    src: "/images/hero-slide-2.jpg",
+    alt: "Beachfront festival LED display screen",
+    tag: "Festivals & Culture",
+    headline: "Outdoor Screens\nThat Command Attention",
+    sub: "Weatherproof, ultra-bright displays built for the UAE climate.",
+  },
+  {
+    src: "/images/hero-slide-3.jpg",
+    alt: "Outdoor LED screen at a sports venue pub",
+    tag: "Sports Venues",
+    headline: "Immersive Screens\nFor Every Crowd",
+    sub: "From sports bars to stadiums — we deliver unforgettable visuals.",
+  },
 ]
 
+const SLIDE_DURATION = 6000
+
 export function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [progress, setProgress] = useState(0)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  })
 
-  useEffect(() => {
-    const el = textRef.current
-    if (!el) return
-    const raf = requestAnimationFrame(() => el.setAttribute("data-animate", "true"))
-    return () => cancelAnimationFrame(raf)
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"])
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    setProgress(0)
   }, [])
 
+  // Progress bar ticker
   useEffect(() => {
-    let raf: number
+    setProgress(0)
+    const interval = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) {
+          clearInterval(interval)
+          return 100
+        }
+        return p + (100 / (SLIDE_DURATION / 50))
+      })
+    }, 50)
+    return () => clearInterval(interval)
+  }, [currentSlide])
 
-    const tick = () => {
-      const video = videoRef.current
+  // Auto advance
+  useEffect(() => {
+    const timer = setTimeout(nextSlide, SLIDE_DURATION)
+    return () => clearTimeout(timer)
+  }, [currentSlide, nextSlide])
 
-      if (video) {
-        if (video.paused && !video.seeking) video.play().catch(() => {})
-        if (video.playbackRate !== 1) video.playbackRate = 1
-      }
-
-      raf = requestAnimationFrame(tick)
-    }
-
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [])
+  const slide = heroSlides[currentSlide]
 
   return (
-    <div ref={sectionRef} id="home" className="relative z-10" aria-label="Aztech LED Screens - LED Screen Supplier in India">
-      <div className="relative min-h-[calc(100vh-36px)] w-full overflow-hidden bg-[var(--bg-dark)]">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover object-[44%_50%]"
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="LED module animation"
-        >
-          <source src="/videos/aztech-hero-cinematic.mp4" type="video/mp4" />
-        </video>
+    <div
+      ref={containerRef}
+      id="home"
+      className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black"
+      aria-label="Lamps plus - LED Screen Supplier in Dubai"
+    >
+      {/* Background Slides */}
+      <motion.div style={{ y }} className="absolute inset-0 h-[120%] w-full -top-[10%]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="absolute inset-0 h-full w-full"
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={currentSlide === 0}
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,10,16,0.12)_0%,rgba(7,10,16,0.36)_35%,rgba(7,10,16,0.77)_64%,rgba(7,10,16,0.95)_100%)]" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_43%_55%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.07)_16%,rgba(28,74,151,0.1)_30%,rgba(7,10,16,0)_52%)]" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(7,10,16,0)_22%,rgba(7,10,16,0.5)_100%)]" aria-hidden="true" />
-        <div className="absolute right-0 top-0 h-full w-[64%] bg-[radial-gradient(circle_at_72%_42%,rgba(28,74,151,0.2),rgba(28,74,151,0)_48%)]" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/22 to-transparent" aria-hidden="true" />
+        {/* Multi-layer cinematic overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/20 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/50 z-[1]" />
+      </motion.div>
 
-        <div className="relative z-10 flex min-h-[calc(100vh-36px)] flex-col">
-          <div ref={textRef} className="relative flex flex-1 flex-col justify-center px-[var(--section-pad-x)] pt-[120px] pb-12 lg:min-h-[calc(100vh-36px)] lg:items-end lg:pt-[126px] lg:pb-12">
-            <div className="relative w-full max-w-[590px] lg:mr-[2.25vw]">
-              <div className="hero-item mb-5 flex items-center gap-4" style={{ "--hero-delay": "0ms" } as React.CSSProperties}>
-                <span className="h-px w-12 bg-[var(--accent-dark-visible)]" aria-hidden="true" />
-                <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/72">
-                  DUBAI&apos;S #1 LED EXPERTS, NOW IN INDIA
-                </p>
-              </div>
-              <h1
-                className="font-serif hero-item mb-6 max-w-[590px] font-extrabold leading-[0.96] text-white drop-shadow-[0_10px_36px_rgba(0,0,0,0.52)]"
-                style={{ fontSize: "clamp(3.2rem,4.85vw,5.35rem)", "--hero-delay": "100ms" } as React.CSSProperties}
-              >
-                Illuminate<br />
-                <span className="relative inline-block pl-[0.04em]">Your Vision</span>
-              </h1>
-              <p
-                className="font-sans hero-item mb-7 max-w-[525px] font-light leading-[1.72] text-white/76 lg:mb-8"
-                style={{ fontSize: "clamp(0.98rem,0.98vw,1.06rem)", "--hero-delay": "200ms" } as React.CSSProperties}
-              >
-                For over 20 years, we&apos;ve illuminated Dubai&apos;s iconic landmarks and served 500+ premium clients across the Middle East. Now, for the first time ever, Aztech brings our world-class LED display expertise directly to India.
-              </p>
-              <div className="flex hero-item mb-7 flex-wrap gap-4 lg:mb-8" style={{ "--hero-delay": "300ms" } as React.CSSProperties}>
-                <a href="#contact" className="inline-flex min-h-12 min-w-[208px] items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent)] px-7 py-3.5 font-sans text-sm font-semibold text-white shadow-[0_14px_38px_rgba(28,74,151,0.28)] transition-all duration-200 hover:-translate-y-px hover:bg-[var(--accent-hover)] hover:shadow-[0_18px_44px_rgba(28,74,151,0.34)]">
-                  Get a Free Quote
-                </a>
-                <a href="#projects" className="inline-flex min-h-12 min-w-[218px] items-center justify-center rounded-[var(--radius-sm)] border border-white/36 bg-white/[0.06] px-7 py-3.5 font-sans text-sm font-semibold text-white backdrop-blur-md transition-all duration-200 hover:border-white/72 hover:bg-white/[0.12]">
-                  View Our Projects
-                </a>
-              </div>
-              <div className="grid hero-item max-w-[560px] grid-cols-1 gap-x-7 gap-y-3.5 border-t border-white/18 pt-5 sm:grid-cols-2" style={{ "--hero-delay": "400ms" } as React.CSSProperties}>
-                {trustBadges.map((badge) => (
-                  <div key={badge} className="flex items-center gap-2">
-                    <Check className="h-3.5 w-3.5 shrink-0 text-[var(--accent-dark-visible)]" aria-hidden="true" />
-                    <span className="font-sans text-[0.82rem] text-white/74">{badge}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="hidden hero-item mt-7 items-center gap-3 lg:flex" style={{ "--hero-delay": "700ms" } as React.CSSProperties}>
-                <div className="relative h-8 w-px bg-white/35">
-                  <div className="absolute top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[var(--accent-dark-visible)] shadow-[0_0_18px_rgba(73,116,186,0.75)]" />
-                </div>
-                <span className="font-sans text-[0.64rem] uppercase tracking-[0.26em] text-white/52">Scroll to explore</span>
-              </div>
+      {/* Main Content — Left Aligned for premium editorial look */}
+      <motion.div
+        style={{ opacity: textOpacity }}
+        className="absolute inset-0 z-10 flex flex-col justify-center px-8 md:px-16 lg:px-24 pt-20"
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="max-w-3xl"
+          >
+            {/* Tag pill */}
+            <div className="inline-flex items-center gap-2 mb-6">
+              <span className="w-8 h-[2px] bg-[#E000D0]" />
+              <span className="font-sans text-[0.75rem] font-bold uppercase tracking-[0.2em] text-[#E000D0]">
+                {slide.tag}
+              </span>
             </div>
+
+            {/* Main Headline */}
+            <h1 className="font-sans text-[clamp(2.8rem,6vw,5.5rem)] font-black leading-[1.05] tracking-tight text-white mb-6 whitespace-pre-line">
+              {slide.headline}
+            </h1>
+
+            {/* Sub text */}
+            <p className="font-sans text-[clamp(1rem,1.5vw,1.2rem)] font-light leading-relaxed text-white/75 mb-10 max-w-xl">
+              {slide.sub}
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#E000D0] text-white font-sans text-[0.9rem] font-semibold rounded-full hover:bg-[#C000B0] transition-all duration-200 shadow-[0_0_30px_rgba(224,0,208,0.35)] hover:shadow-[0_0_40px_rgba(224,0,208,0.5)] hover:scale-[1.03]"
+              >
+                Get a Free Quote
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#portfolio"
+                className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/30 text-white font-sans text-[0.9rem] font-medium rounded-full hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+              >
+                View Our Work
+              </a>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Bottom Bar — Slide controls + company name */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 px-8 md:px-16 lg:px-24 pb-8 flex items-end justify-between">
+        {/* Left: company tag + slide dots */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className="relative h-[3px] rounded-full overflow-hidden transition-all duration-300"
+                style={{ width: i === currentSlide ? "48px" : "24px", background: "rgba(255,255,255,0.25)" }}
+              >
+                {i === currentSlide && (
+                  <motion.span
+                    key={currentSlide}
+                    initial={{ width: "0%" }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0, ease: "linear" }}
+                    className="absolute left-0 top-0 h-full bg-[#E000D0] rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
+                )}
+              </button>
+            ))}
           </div>
+          <p className="font-sans text-[0.7rem] font-bold uppercase tracking-[0.2em] text-white/40">
+            Lamps plus · Dubai, UAE
+          </p>
         </div>
+
+        {/* Right: Scroll down cue */}
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 group"
+          aria-label="Scroll down"
+        >
+          <span className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/40 group-hover:text-white/70 transition-colors">
+            Scroll
+          </span>
+          <ChevronDown className="w-4 h-4 text-white/40 group-hover:text-white/70 animate-bounce transition-colors" />
+        </a>
+      </div>
+
+      {/* Slide number indicator — top right */}
+      <div className="absolute top-8 right-8 md:right-16 z-20 flex items-center gap-3">
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={currentSlide}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.3 }}
+            className="font-sans text-[2.5rem] font-black text-white/10 leading-none tabular-nums"
+          >
+            0{currentSlide + 1}
+          </motion.span>
+        </AnimatePresence>
+        <span className="font-sans text-[0.75rem] text-white/25">/ 0{heroSlides.length}</span>
       </div>
     </div>
   )

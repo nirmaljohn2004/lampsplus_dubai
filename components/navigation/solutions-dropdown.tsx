@@ -66,7 +66,7 @@ export function SolutionsDropdown() {
           </div>
 
           {/* Featured Panel */}
-          <div className="bg-[var(--accent)] rounded-[var(--radius-md)] p-6 text-white flex flex-col justify-between">
+          <div className="bg-[#E000D0] rounded-[var(--radius-md)] p-6 text-white flex flex-col justify-between shadow-[0_0_20px_rgba(224,0,208,0.2)]">
             <div>
               <h3 className="font-serif text-[1.5rem] font-bold mb-2">
                 500+ Projects Across UAE

@@ -8,31 +8,31 @@ const faqs = [
     id: "faq-1",
     question: "What is the price of an LED screen in Dubai?",
     answer:
-      "LED screen prices in Dubai vary based on size, pixel pitch and type. Indoor LED screens start from AED 10,000, while large outdoor billboard displays range from AED 50,000 to AED 200,000+. Contact Aztech LED for a free custom quote.",
+      "LED screen prices in Dubai vary based on size, pixel pitch and type. Indoor LED screens start from AED 10,000, while large outdoor billboard displays range from AED 50,000 to AED 200,000+. Contact Lamps plus for a free custom quote.",
   },
   {
     id: "faq-2",
-    question: "Does Aztech LED supply outdoor LED screens in UAE?",
+    question: "Does Lamps plus supply outdoor LED screens in UAE?",
     answer:
-      "Yes. Aztech LED supplies weatherproof outdoor DIP and SMD LED displays rated up to 5000 nits for the UAE climate, suitable for billboards, building facades, and roadside signage across Dubai, Abu Dhabi, Sharjah and all Emirates.",
+      "Yes. Lamps plus supplies weatherproof outdoor DIP and SMD LED displays rated up to 5000 nits for the UAE climate, suitable for billboards, building facades, and roadside signage across Dubai, Abu Dhabi, Sharjah and all Emirates.",
   },
   {
     id: "faq-3",
     question: "What is pixel pitch and which one should I choose?",
     answer:
-      "Pixel pitch is the distance in millimetres between LED clusters. A smaller number (e.g. P1.2) means higher resolution suitable for close viewing indoors. A larger number (e.g. P6 or P10) is ideal for outdoor billboards viewed from a distance. Aztech stocks P1.2 to P10.",
+      "Pixel pitch is the distance in millimetres between LED clusters. A smaller number (e.g. P1.2) means higher resolution suitable for close viewing indoors. A larger number (e.g. P6 or P10) is ideal for outdoor billboards viewed from a distance. Lamps plus stocks P1.2 to P10.",
   },
   {
     id: "faq-4",
-    question: "Does Aztech LED provide installation services in Dubai?",
+    question: "Does Lamps plus provide installation services in Dubai?",
     answer:
-      "Yes. Aztech LED has a full in-house installation team that handles site survey, structural mounting, cable routing, screen assembly, controller configuration and final commissioning. No subcontractors are used.",
+      "Yes. Lamps plus has a full in-house installation team that handles site survey, structural mounting, cable routing, screen assembly, controller configuration and final commissioning. No subcontractors are used.",
   },
   {
     id: "faq-5",
     question: "Do you offer maintenance contracts for LED screens?",
     answer:
-      "Yes. Aztech LED offers Annual Maintenance Contracts (AMC) covering preventive maintenance, emergency callouts, spare parts supply, remote monitoring and firmware updates with a 24-hour response SLA.",
+      "Yes. Lamps plus offers Annual Maintenance Contracts (AMC) covering preventive maintenance, emergency callouts, spare parts supply, remote monitoring and firmware updates with a 24-hour response SLA.",
   },
 ]
 
@@ -111,7 +111,7 @@ export function FAQSection() {
           </p>
           <a
             href="#contact"
-            aria-label="Contact Aztech LED with your LED screen questions"
+            aria-label="Contact Lamps plus with your LED screen questions"
             className="inline-flex items-center px-6 py-3 bg-transparent border-[1.5px] border-[var(--accent)] text-[var(--accent)] font-sans text-[0.9rem] font-semibold rounded-[var(--radius-sm)] hover:bg-[var(--accent)] hover:text-white transition-all duration-200"
           >
             Ask Us Directly

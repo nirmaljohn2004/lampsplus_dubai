@@ -157,7 +157,7 @@ export function BlogArticlePage({ post }: Props) {
                 <Link
                   key={rel.slug}
                   href={`/blog/${rel.slug}`}
-                  className="group flex flex-col bg-white rounded-3xl border border-[var(--border-light)] overflow-hidden hover:shadow-2xl hover:shadow-[var(--accent)]/5 hover:-translate-y-1 transition-all duration-400"
+                  className="group flex flex-col bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border-light)] overflow-hidden hover:shadow-2xl hover:shadow-white/5 hover:-translate-y-1 transition-all duration-400"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden bg-[var(--bg-tertiary)]">
                     <Image
@@ -291,7 +291,7 @@ function ArticleSection({ section }: { section: BlogSection }) {
               )}
               <tbody>
                 {section.rows?.map((row, i) => (
-                  <tr key={i} className="bg-white border-b border-[var(--border-light)] last:border-0 hover:bg-gray-50 transition-colors">
+                  <tr key={i} className="bg-[var(--bg-primary)] border-b border-[var(--border-light)] last:border-0 hover:bg-[var(--bg-tertiary)] transition-colors">
                     <td className="px-6 py-4 text-[var(--text-primary)] font-semibold border-r border-[var(--border-light)]">{row.col1}</td>
                     <td className="px-6 py-4 text-[var(--text-secondary)] leading-relaxed border-r border-[var(--border-light)]">{row.col2}</td>
                     {row.col3 !== undefined && (
@@ -307,7 +307,7 @@ function ArticleSection({ section }: { section: BlogSection }) {
 
     case 'callout':
       return (
-        <div className="my-10 bg-gradient-to-r from-[var(--bg-secondary)] to-white border-l-4 border-[var(--accent)] rounded-r-2xl p-6 md:p-8 shadow-sm">
+        <div className="my-10 bg-gradient-to-r from-[var(--bg-secondary)] to-[var(--bg-tertiary)] border-l-4 border-[var(--accent)] rounded-r-2xl p-6 md:p-8 shadow-sm">
           <p className="font-sans text-[1.1rem] md:text-[1.15rem] leading-[1.8] font-medium text-[var(--text-primary)] whitespace-pre-line italic">
             "{section.text}"
           </p>
@@ -316,7 +316,7 @@ function ArticleSection({ section }: { section: BlogSection }) {
 
     case 'cta':
       return (
-        <div className="my-12 bg-white rounded-3xl border border-[var(--border-light)] p-8 md:p-10 text-center shadow-lg shadow-black/5">
+        <div className="my-12 bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border-light)] p-8 md:p-10 text-center shadow-lg shadow-black/5">
           <p className="font-serif text-[1.6rem] font-bold leading-[1.4] tracking-tight text-[var(--text-primary)] mb-6 max-w-xl mx-auto">
             {section.text}
           </p>

@@ -24,7 +24,7 @@ const solutions = [
 ]
 
 const company = [
-  { label: "About Aztech", href: "/#about" },
+  { label: "About Lamps plus", href: "/#about" },
   { label: "Our Projects", href: "/#projects" },
   { label: "Our Services", href: "/#services" },
   { label: "Blog & Resources", href: "/#blog" },
@@ -39,27 +39,27 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--bg-primary)] pt-20 border-t border-[var(--border-light)]">
+    <footer className="bg-[var(--bg-primary)] pt-10 border-t border-[var(--border-light)]">
       <div className="px-[var(--section-pad-x)]">
         <div className="max-w-[var(--container-max)] mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-12 lg:pb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 pb-8">
             {/* Brand Column */}
             <div className="lg:col-span-1.5 md:col-span-2 lg:col-span-1">
               <div className="flex flex-col mb-5">
-                <a href="/" className="inline-flex items-center mb-4 hover:opacity-80 transition-opacity w-fit">
-                  <Image
-                    src="/images/1.jpg__2_-removebg-preview.png"
-                    alt="Aztech LED Logo"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 object-cover"
-                  />
-                </a>
+              <a href="/" className="inline-flex items-center gap-2 mb-3 hover:opacity-80 transition-opacity w-fit">
+                <Image
+                  src="/images/lamps-plus-logo.svg"
+                  alt="Lamps plus Logo"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 object-contain flex-shrink-0"
+                />
+                <span className="font-sans text-[1.1rem] font-bold text-[var(--text-primary)] tracking-tight">Lamps plus</span>
+              </a>
               </div>
               
-              <p className="font-sans text-[0.88rem] leading-[1.7] text-[var(--text-secondary)] mb-6 max-w-sm">
-                India&apos;s LED screen specialists, backed by 20+ years of Dubai excellence.
-                We design, supply, install and service every project — across all major cities in India.
+              <p className="font-sans text-[0.82rem] leading-[1.7] text-[var(--text-secondary)] mb-4 max-w-[220px]">
+                Dubai's premier LED screen specialists. We design, supply, install and service high-quality visual experiences for every project.
               </p>
 
               {/* Social Links */}
@@ -141,9 +141,9 @@ export function Footer() {
                 Contact Us
               </h3>
               <address className="not-italic font-sans text-[0.82rem] text-[var(--text-secondary)] leading-[1.7] mb-4">
-                H.No.21, Kuttiyil House,<br />
-                Sundaragiri Road, Kalamassery,<br />
-                Ernakulam, Kerala – 683104
+                Alquoz industrial area 3,<br />
+                Near Audi Showroom,<br />
+                Dubai
               </address>
               <p className="font-sans text-[0.82rem] text-[var(--text-secondary)] mb-4">
                 Mon–Sat: 8:00 AM – 6:00 PM
@@ -166,24 +166,22 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="bg-[var(--bg-primary)] border-t border-[var(--border-light)]">
-        <div className="px-[var(--section-pad-x)] py-6 pb-28 md:pb-8">
+        <div className="px-[var(--section-pad-x)] py-4 pb-24 md:pb-6">
           <div className="max-w-[var(--container-max)] mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 text-center md:text-left">
             <div className="flex flex-col gap-1.5">
               <p className="font-sans text-[0.8rem] font-medium text-[var(--text-secondary)]">
-                © 2026 Aztech LED Screens Private Limited. All Rights Reserved.
+                © 2026 Lamps plus. All Rights Reserved.
               </p>
               <p className="font-sans text-[0.75rem] text-[var(--text-secondary)]/70 hidden sm:block">
-                Head Office: <span className="font-medium text-[var(--text-secondary)]">Aztech General Trading LLC, Dubai</span>
-                <span className="mx-1.5 text-white/20">·</span>
-                Sister Concern: <span className="font-medium text-[var(--text-secondary)]">Lamps Plus Electronics Trading LLC</span>
+                Head Office: <span className="font-medium text-[var(--text-secondary)]">Lamps plus, Dubai</span>
               </p>
             </div>
             <div className="flex flex-col gap-1.5 lg:text-right">
               <p className="font-sans text-[0.75rem] font-medium text-[var(--text-secondary)] hidden lg:block">
-                LED Screen India | Digital Signage India | Outdoor LED Displays
+                LED Screen Dubai | Digital Signage Dubai | Outdoor LED Displays
               </p>
               <p className="font-sans text-[0.75rem] font-medium text-[var(--text-secondary)]/70">
-                Dubai Expertise · India Service
+                Dubai Expertise · Premium Service
               </p>
             </div>
           </div>

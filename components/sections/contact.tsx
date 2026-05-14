@@ -21,25 +21,23 @@ const serviceOptions = [
 
 const locationOptions = [
   "Select location...",
-  "Mumbai",
-  "Delhi / NCR",
-  "Bangalore",
-  "Hyderabad",
-  "Chennai",
-  "Kolkata",
-  "Pune",
-  "Ahmedabad",
-  "Kochi",
-  "Other (within India)",
-  "Outside India",
+  "Dubai",
+  "Abu Dhabi",
+  "Sharjah",
+  "Ajman",
+  "Ras Al Khaimah",
+  "Fujairah",
+  "Umm Al Quwain",
+  "Other (within UAE)",
+  "Outside UAE",
 ]
 
 const budgetOptions = [
   "Prefer not to say",
-  "Under ₹50,000",
-  "₹50,000 – ₹2,00,000",
-  "₹2,00,000 – ₹10,00,000",
-  "₹10,00,000+",
+  "Under AED 5,000",
+  "AED 5,000 – AED 20,000",
+  "AED 20,000 – AED 100,000",
+  "AED 100,000+",
 ]
 
 const sourceOptions = [
@@ -114,7 +112,7 @@ export function ContactSection() {
       ref={ref}
       id="contact" 
       className={`section-padding bg-[var(--bg-primary)] reveal-section ${isVisible ? "visible" : ""}`}
-      aria-label="Contact Aztech LED Dubai — Get a Free Quote"
+      aria-label="Contact Lamps plus Dubai — Get a Free Quote"
     >
       <div className="max-w-[var(--container-max)] mx-auto">
         {/* Header */}
@@ -132,14 +130,14 @@ export function ContactSection() {
           {/* Contact Info - Left */}
           <div>
             {/* Company card */}
-            <div className="bg-white p-7 rounded-[var(--radius-md)] border border-[var(--border-light)] mb-6">
+            <div className="bg-[var(--bg-secondary)] p-7 rounded-[var(--radius-md)] border border-[var(--border-light)] mb-6">
               <div className="flex flex-col mb-5">
                 <div className="flex items-baseline gap-0.5">
-                  <span className="font-serif text-[26px] font-bold text-[var(--text-primary)]">AZTECH</span>
-                  <span className="font-sans text-[14px] font-semibold text-[var(--accent)]"> LED</span>
+                  <span className="font-serif text-[26px] font-bold text-[var(--text-primary)]">LAMPS</span>
+                  <span className="font-sans text-[14px] font-semibold text-[var(--accent)]"> PLUS</span>
                 </div>
                 <span className="font-sans text-[0.85rem] text-[var(--text-muted)]">
-                  Aztech LED Screens Private Limited
+                  Lamps plus
                 </span>
               </div>
 
@@ -148,25 +146,18 @@ export function ContactSection() {
                 <div className="flex items-start gap-2">
                   <span className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[var(--accent)] whitespace-nowrap mt-0.5">Head Office</span>
                   <span className="font-sans text-[0.82rem] text-[var(--text-body)] leading-[1.5]">
-                    Aztech General Trading LLC, Dubai, UAE
-                  </span>
-                </div>
-                <div className="h-px bg-[var(--border-light)]" />
-                <div className="flex items-start gap-2">
-                  <span className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[var(--copper)] whitespace-nowrap mt-0.5">Sister Concern</span>
-                  <span className="font-sans text-[0.82rem] text-[var(--text-body)] leading-[1.5]">
-                    Lamps Plus Electronics Trading LLC
+                    Lamps plus, Dubai, UAE
                   </span>
                 </div>
               </div>
 
               <div className="flex flex-col gap-4">
-                <a href="https://www.google.com/maps/search/?api=1&query=10.0501,76.3108" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Alquoz+industrial+area+3+Near+Audi+Showroom+Dubai" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
                   <MapPin className="w-[18px] h-[18px] text-[var(--accent-mid)] mt-1 shrink-0" aria-hidden="true" />
                   <address className="font-sans text-[0.9rem] text-[var(--text-body)] not-italic leading-[1.6] group-hover:text-[var(--accent)] transition-colors">
-                    H.No.21, Kuttiyil House, Sundaragiri Road,<br />
-                    Kalamassery, Ernakulam,<br />
-                    Kerala – 683104
+                    Alquoz industrial area 3,<br />
+                    Near Audi Showroom,<br />
+                    Dubai
                   </address>
                 </a>
                 
@@ -205,8 +196,8 @@ export function ContactSection() {
             {/* Map embed */}
             <div className="aspect-[4/3] rounded-[var(--radius-md)] border border-[var(--border-light)] overflow-hidden mb-6">
               <iframe
-                title="Aztech LED Screens office location in Kalamassery, Ernakulam, Kerala"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.0!2d76.3108!3d10.0501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d3d27a98b9f%3A0x6b7f9b8c4e2d1a5c!2sKalamassery%2C%20Ernakulam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1746120000000!5m2!1sen!2sin"
+                title="Lamps plus office location in Dubai"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14446.591244589258!2d55.2255!3d25.1432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6a1e34b8c6bb%3A0x8bbd30c51e06c7e3!2sAl%20Quoz%20Industrial%20Area%203%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -239,7 +230,7 @@ export function ContactSection() {
           </div>
 
           {/* Form - Right */}
-          <div className="bg-white p-8 lg:p-10 rounded-[var(--radius-lg)] border border-[var(--border-light)]">
+          <div className="bg-[var(--bg-secondary)] p-8 lg:p-10 rounded-[var(--radius-lg)] border border-[var(--border-light)]">
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center h-full py-12 text-center">
                 <div className="w-16 h-16 rounded-full bg-[var(--success-bg)] flex items-center justify-center mb-6">
@@ -332,7 +323,7 @@ export function ContactSection() {
                         id="service"
                         name="service"
                         required
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-white"
+                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
                       >
                         {serviceOptions.map((option) => (
                           <option key={option} value={option === "Select a service..." ? "" : option}>
@@ -348,7 +339,7 @@ export function ContactSection() {
                       <select
                         id="location"
                         name="location"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-white"
+                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
                       >
                         {locationOptions.map((option) => (
                           <option key={option} value={option === "Select district..." ? "" : option}>
@@ -368,7 +359,7 @@ export function ContactSection() {
                       <select
                         id="budget"
                         name="budget"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-white"
+                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
                       >
                         {budgetOptions.map((option) => (
                           <option key={option} value={option}>
@@ -384,7 +375,7 @@ export function ContactSection() {
                       <select
                         id="source"
                         name="source"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-white"
+                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
                       >
                         {sourceOptions.map((option) => (
                           <option key={option} value={option === "How did you hear about us?" ? "" : option}>

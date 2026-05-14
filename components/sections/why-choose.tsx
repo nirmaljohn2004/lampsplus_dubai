@@ -43,7 +43,7 @@ export function WhyChooseSection() {
   return (
     <section 
       ref={ref}
-      className={`section-padding bg-[var(--accent)] reveal-section ${isVisible ? "visible" : ""}`}
+      className={`section-padding bg-[var(--bg-tertiary)] reveal-section ${isVisible ? "visible" : ""}`}
       aria-label="Why choose Aztech"
     >
       <div className="max-w-[var(--container-max)] mx-auto">

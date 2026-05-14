@@ -81,11 +81,11 @@ export function ServicesSection() {
                     {service.tag}
                   </span>
                   
-                  <h3 className="font-sans text-[1.4rem] font-bold text-[var(--text-primary)] mb-4">
+                  <h3 className="font-sans text-[1.4rem] font-bold text-gray-900 mb-4">
                     {service.title}
                   </h3>
                   
-                  <p className="font-sans text-[0.95rem] leading-[1.75] text-[var(--text-body)] mb-6">
+                  <p className="font-sans text-[0.95rem] leading-[1.75] text-gray-700 mb-6">
                     {service.description}
                   </p>
                   
@@ -93,7 +93,7 @@ export function ServicesSection() {
                     {service.specs.map((spec) => (
                       <li key={spec} className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-[var(--success)]" aria-hidden="true" />
-                        <span className="font-sans text-[0.88rem] text-[var(--text-secondary)]">
+                        <span className="font-sans text-[0.88rem] text-gray-700">
                           {spec}
                         </span>
                       </li>

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.metaTitle,
     description: post.metaDescription,
-    keywords: `LED screen Dubai, ${post.category}, LED display UAE, Aztech LED`,
+    keywords: `LED screen Dubai, ${post.category}, LED display UAE, Lamps plus`,
     authors: [{ name: post.author }],
     robots: { index: true, follow: true },
     openGraph: {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${BASE}/blog/${post.slug}`,
       title: post.metaTitle,
       description: post.metaDescription,
-      siteName: 'Aztech LED General Trading LLC',
+      siteName: 'Lamps plus',
       locale: 'en_AE',
       publishedTime: post.dateISO,
       authors: [post.author],
@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: Props) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Aztech LED General Trading LLC',
+      name: 'Lamps plus',
       logo: {
         '@type': 'ImageObject',
         url: `${BASE}/images/hero_led_wall_1774782256673.png`,

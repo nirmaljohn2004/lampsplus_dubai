@@ -1,145 +1,196 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { useReveal } from "@/hooks/use-reveal"
+import { useRef, useState } from "react"
 import Image from "next/image"
-import { 
-  Monitor, Sun, Layers, Sparkles, 
-  CircleDot, Grid3x3, Square, LayoutGrid,
-  Tv, Globe, Maximize, Building,
-  Car, TrafficCone, Thermometer, Box
-} from "lucide-react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
+import { Monitor, Sun, Layers, Car, ArrowRight } from "lucide-react"
 
-const products = [
-  { icon: Monitor, name: "HD LED Display", description: "Ultra-high resolution, pixel pitch from P1.2", tag: "Indoor", image: "/images/prod_1.webp" },
-  { icon: Tv, name: "Indoor LED Display", description: "Vibrant colors for retail, corporate and hospitality", tag: "Indoor", image: "/images/prod_2.webp" },
-  { icon: Sun, name: "Outdoor DIP LED Display", description: "Weatherproof, 5000 nits brightness for harsh UAE sun", tag: "Outdoor", image: "/images/prod_3.webp" },
-  { icon: Maximize, name: "Outdoor SMD LED Display", description: "Wide viewing angle, excellent color uniformity", tag: "Outdoor", image: "/images/prod_4.webp" },
-  { icon: Box, name: "Die-Cast Aluminum LED", description: "Lightweight fast-deploy panels, IP65 rated", tag: "Outdoor", image: "/images/prod_5.webp" },
-  { icon: Layers, name: "Curtain / Mesh LED", description: "Semi-transparent for building facades and events", tag: "Specialty", image: "/images/prod_6.webp" },
-  { icon: Grid3x3, name: "Front Service LED", description: "Front-access maintenance for built-in wall installations", tag: "Indoor", image: "/images/prod_7.webp" },
-  { icon: Square, name: "Floor LED Display", description: "Load-bearing interactive floor screens, 1000kg/m² rated", tag: "Specialty", image: "/images/prod_8.webp" },
-  { icon: LayoutGrid, name: "Poster LED Display", description: "Slim standalone portrait LED for promotions", tag: "Indoor", image: "/images/prod_9.webp" },
-  { icon: Sparkles, name: "Transparent Glass LED", description: "See-through film or glass LED for storefronts", tag: "Specialty", image: "/images/prod_10.webp" },
-  { icon: CircleDot, name: "Perimeter LED Display", description: "Sports stadium perimeter advertising boards", tag: "Outdoor", image: "/images/prod_11.webp" },
-  { icon: Layers, name: "Curve LED Display", description: "Flexible curved screens for creative installations", tag: "Specialty", image: "/images/prod_12.webp" },
-  { icon: Globe, name: "Spherical LED Display", description: "360° globe displays for exhibitions and lobbies", tag: "Specialty", image: "/images/prod_13.webp" },
-  { icon: Sparkles, name: "Creative Shape LED", description: "Any irregular shape — cylinders, letters, cubes", tag: "Specialty", image: "/images/prod_14.webp" },
-  { icon: Building, name: "Gas Price LED Display", description: "UAE petrol station price boards, RTA compliant", tag: "Niche", image: "/images/prod_15.webp" },
-  { icon: Car, name: "Taxi Rooftop LED", description: "Dubai taxi advertising, RTA-approved systems", tag: "Niche", image: "/images/prod_16.webp" },
-  { icon: TrafficCone, name: "Traffic LED Display", description: "Road information, variable message signs", tag: "Niche", image: "/images/prod_17.webp" },
-  { icon: Monitor, name: "LCD Video Wall", description: "Seamless LCD panels for control rooms, lobbies, command centers", tag: "Indoor", image: "/images/prod_18.webp" },
+const categories = [
+  {
+    id: "indoor",
+    name: "Indoor Displays",
+    description: "Ultra-fine pitch screens crafted for high-end retail, corporate, and broadcast environments.",
+    products: [
+      { name: "HD Fine Pitch LED", image: "/images/prod_1.webp" },
+      { name: "Retail & Showroom LED", image: "/images/prod_2.webp" },
+      { name: "Front Service Modules", image: "/images/prod_7.webp" },
+      { name: "Seamless LCD Video Walls", image: "/images/prod_18.webp" },
+    ]
+  },
+  {
+    id: "outdoor",
+    name: "Outdoor Solutions",
+    description: "Weatherproof displays built to perform flawlessly in extreme climates and direct sunlight.",
+    products: [
+      { name: "DIP Billboard LED", image: "/images/prod_3.webp" },
+      { name: "SMD Outdoor Display", image: "/images/prod_4.webp" },
+      { name: "Die-Cast Rental LED", image: "/images/prod_5.webp" },
+      { name: "Stadium Perimeter", image: "/images/prod_11.webp" },
+    ]
+  },
+  {
+    id: "specialty",
+    name: "Specialty Screens",
+    description: "Creative shapes, transparent glass, and interactive floors for bespoke structural installations.",
+    products: [
+      { name: "Transparent Glass LED", image: "/images/prod_10.webp" },
+      { name: "Curved & Flexible LED", image: "/images/prod_12.webp" },
+      { name: "Interactive Floor LED", image: "/images/prod_8.webp" },
+      { name: "Creative Shape Modules", image: "/images/prod_14.webp" },
+    ]
+  },
+  {
+    id: "niche",
+    name: "Niche Applications",
+    description: "RTA-approved and municipality-compliant signage engineered for specialized industry needs.",
+    products: [
+      { name: "Gas Station Price LED", image: "/images/prod_15.webp" },
+      { name: "Taxi Rooftop Display", image: "/images/prod_16.webp" },
+      { name: "Traffic & VMS Boards", image: "/images/prod_17.webp" },
+      { name: "Poster & Standalone", image: "/images/prod_9.webp" },
+    ]
+  }
 ]
 
-const tagColors: Record<string, string> = {
-  Indoor: "bg-[var(--accent-light)] text-[var(--accent)]",
-  Outdoor: "bg-[#FEF3E2] text-[#B5722A]",
-  Specialty: "bg-[#F0F4F8] text-[#4A7BA7]",
-  Niche: "bg-[#F5F0E8] text-[#6B5D45]",
-}
-
 export function ProductsSection() {
-  const { ref, isVisible } = useReveal()
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-10% 0px" })
+  const [activeTab, setActiveTab] = useState(categories[0].id)
+
+  const activeCategory = categories.find(c => c.id === activeTab)!
 
   return (
     <section 
-      ref={ref}
+      ref={sectionRef}
       id="products" 
-      className={`section-padding bg-[var(--accent)] reveal-section ${isVisible ? "visible" : ""}`}
-      aria-label="LED Screen Products by Aztech UAE"
+      className="bg-[#050505] relative overflow-hidden min-h-[100svh] flex flex-col justify-center py-12 lg:py-0"
     >
-      <div className="max-w-[var(--container-max)] mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="eyebrow !text-white/80 mb-3">WHAT WE SUPPLY</p>
-          <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.15] text-white mb-4">
-            18 LED Screen Products For Every Need
+      {/* Subtle background glow */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E000D0] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="max-w-[var(--container-max)] mx-auto px-[var(--section-pad-x)] relative z-10 w-full">
+        
+        {/* Massive Typography Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 lg:mb-16"
+        >
+          <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E000D0] uppercase mb-4">
+            Our Technologies
+          </p>
+          <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] font-medium text-white leading-[1.05] tracking-tight max-w-4xl">
+            Engineered to <span className="text-white/40 italic">captivate.</span>
           </h2>
-          <p className="font-sans text-[1rem] leading-[1.75] text-white/70 max-w-[600px] mx-auto">
-            From poster-sized indoor displays to stadium-scale outdoor screens — we stock and supply the UAE&apos;s widest range of LED display products.
-          </p>
-        </div>
+        </motion.div>
 
-        {/* Featured Products Visual Row */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {[
-            { name: "Indoor Display Panels", image: "/images/product_indoor_1774782297798.webp" },
-            { name: "Outdoor Billboard Modules", image: "/images/product_outdoor_1774782316663.webp" },
-            { name: "Transparent Glass LED", image: "/images/product_transparent_1774782335491.webp" },
-            { name: "Slim Poster LED", image: "/images/product_poster_1774782355639.webp" },
-          ].map((featured) => (
-            <div key={featured.name} className="relative aspect-square rounded-[var(--radius-md)] overflow-hidden group shadow-[var(--shadow-card)] border border-white/10 bg-white/5 backdrop-blur-sm">
-              <Image 
-                src={featured.image} 
-                alt={`${featured.name} - high quality product photography`} 
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-                width={400}
-                height={400}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-5 translate-y-2 group-hover:translate-y-0 transition-transform">
-                <h3 className="font-sans text-[1.05rem] font-semibold text-white">{featured.name}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <div 
-              key={product.name}
-              className="group relative bg-white/5 flex flex-col rounded-[var(--radius-md)] overflow-hidden border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300"
-              style={{ transitionDelay: `${index * 20}ms` }}
-            >
-              {/* Product Image */}
-              <div className="relative aspect-video overflow-hidden bg-white/10">
-                 <Image 
-                   src={product.image}
-                   alt={product.name}
-                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                   loading="lazy"
-                   decoding="async"
-                   width={400}
-                   height={225}
-                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                 />
-                 <div className="absolute top-3 right-3">
-                   <span className="inline-block font-sans text-[0.68rem] font-bold px-[10px] py-[3px] rounded-[var(--radius-full)] shadow-sm bg-white/15 text-white border border-white/10 backdrop-blur-sm">
-                     {product.tag}
-                   </span>
-                 </div>
-              </div>
-              
-              <div className="p-5 flex flex-col flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <product.icon className="w-5 h-5 text-white/80 stroke-[1.5]" aria-hidden="true" />
-                  <h3 className="font-sans text-[1.05rem] font-semibold text-white">
-                    {product.name}
-                  </h3>
+        {/* Interactive Split Layout */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+          
+          {/* Left: Category Tabs */}
+          <div className="lg:w-[40%] flex flex-col w-full">
+            {categories.map((category, idx) => {
+              const isActive = activeTab === category.id
+              return (
+                <div key={category.id} className="border-t border-white/10 last:border-b">
+                  <button
+                    onClick={() => setActiveTab(category.id)}
+                    className="w-full text-left py-5 lg:py-6 group"
+                  >
+                    <div className="flex items-start gap-4 lg:gap-6">
+                      <span className={`
+                        font-sans text-xs font-bold tracking-widest mt-1.5 transition-colors duration-500
+                        ${isActive ? 'text-[#E000D0]' : 'text-white/20 group-hover:text-white/50'}
+                      `}>
+                        0{idx + 1}
+                      </span>
+                      <div className="flex-1">
+                        <h3 className={`
+                          font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-tight transition-all duration-500
+                          ${isActive ? 'text-white' : 'text-white/30 group-hover:text-white/60'}
+                        `}>
+                          {category.name}
+                        </h3>
+                        
+                        {/* Expandable Content */}
+                        <AnimatePresence initial={false}>
+                          {isActive && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-4 pb-1">
+                                <p className="font-sans text-[0.9rem] text-white/60 leading-relaxed max-w-md">
+                                  {category.description}
+                                </p>
+                                <div className="mt-5">
+                                  <a 
+                                    href="#contact" 
+                                    className="inline-flex items-center gap-2 font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E000D0] transition-colors"
+                                  >
+                                    <span className="w-6 h-[1px] bg-current" />
+                                    Explore Specs
+                                  </a>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </button>
                 </div>
-                
-                <p className="font-sans text-[0.88rem] text-white/70 line-clamp-2 mt-auto">
-                  {product.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+              )
+            })}
+          </div>
 
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <p className="font-sans text-[0.9rem] text-white/70 mb-4">
-            Looking for a specific spec? Get a custom quote.
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center px-6 py-3 bg-white text-[var(--accent)] font-sans text-[0.9rem] font-semibold rounded-[var(--radius-sm)] hover:bg-[var(--accent-light)] hover:text-[var(--accent-dark-visible)] transition-all duration-200"
-          >
-            Request Custom Quote
-          </a>
+          {/* Right: Compact Stunning Gallery */}
+          <div className="lg:w-[60%] w-full">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, scale: 0.98, filter: "blur(2px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.02, filter: "blur(2px)" }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="grid grid-cols-2 gap-4 lg:gap-6"
+              >
+                {activeCategory.products.map((prod, idx) => (
+                  <div 
+                    key={prod.name} 
+                    className="group flex flex-col gap-3"
+                  >
+                    <div className="relative aspect-[4/3] rounded-[16px] lg:rounded-[20px] overflow-hidden bg-[#111111] border border-white/5 shadow-2xl">
+                      <Image 
+                        src={prod.image}
+                        alt={prod.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105"
+                        width={600} 
+                        height={450}
+                        loading={idx < 2 ? "eager" : "lazy"}
+                      />
+                      {/* Elegant dark gradient overlay to frame the image */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent opacity-80" />
+                    </div>
+                    
+                    <div className="flex items-center justify-between px-1">
+                       <h4 className="font-sans text-[0.95rem] font-medium text-white tracking-wide">
+                         {prod.name}
+                       </h4>
+                       <div className="w-6 h-6 rounded-full border border-white/10 flex items-center justify-center opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]">
+                         <ArrowRight className="w-3 h-3 text-white" />
+                       </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          
         </div>
       </div>
     </section>

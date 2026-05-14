@@ -25,10 +25,10 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Aztech LED | #1 LED Screen Supplier in India | Indoor & Outdoor Displays",
-  description: "Aztech LED Screens — India’s premier LED screen supplier backed by 20+ years of Dubai excellence. Indoor LED displays, outdoor billboards, transparent LED & video walls. Serving all of India. Get a free quote today.",
-  keywords: "LED screen India, LED display supplier India, outdoor LED billboard India, indoor LED screen India, video wall India, transparent LED display India, LED screen installation India, digital signage India, LED screen price India, P2 LED screen India",
-  authors: [{ name: "Aztech LED Screens Private Limited" }],
+  title: "Lamps plus | #1 LED Screen Supplier in Dubai | Indoor & Outdoor Displays",
+  description: "Lamps plus — Dubai's premier LED screen supplier. Indoor LED displays, outdoor billboards, transparent LED & video walls. Get a free quote today.",
+  keywords: "LED screen Dubai, LED display supplier UAE, outdoor LED billboard Dubai, indoor LED screen Dubai, video wall UAE, transparent LED display Dubai",
+  authors: [{ name: "Lamps plus" }],
   robots: {
     index: true,
     follow: true,
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://aztechledscreens.com/",
-    title: "Aztech LED | #1 LED Screen Supplier in India",
-    description: "India’s most trusted LED display company, backed by 20+ years of Dubai excellence. Indoor, outdoor, transparent LED screens & video walls. Serving all of India.",
-    siteName: "Aztech LED Screens Private Limited",
+    title: "Lamps plus | #1 LED Screen Supplier in Dubai",
+    description: "Dubai's most trusted LED display company. Indoor, outdoor, transparent LED screens & video walls.",
+    siteName: "Lamps plus",
     locale: "en_IN",
     images: [
       {
@@ -57,18 +57,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aztech LED | #1 LED Screen Supplier in India",
-    description: "India’s most trusted LED display company, backed by 20+ years of Dubai excellence. Indoor, outdoor & specialty LED screens. 500+ clients.",
+    title: "Lamps plus | #1 LED Screen Supplier in Dubai",
+    description: "Dubai's most trusted LED display company. Indoor, outdoor & specialty LED screens.",
     images: ["https://aztechledscreens.com/images/hero_led_wall_1774782256673.webp"],
   },
   alternates: {
     canonical: "https://aztechledscreens.com/",
   },
   other: {
-    'geo.region': 'IN-KL',
-    'geo.placename': 'Ernakulam, Kerala, India',
-    'geo.position': '10.0501;76.3108',
-    'ICBM': '10.0501, 76.3108',
+    'geo.region': 'AE-DU',
+    'geo.placename': 'Alquoz industrial area 3 Near Audi Showroom Dubai',
+    'geo.position': '25.1328;55.2341',
+    'ICBM': '25.1328, 55.2341',
     'http-equiv-Content-Language': 'en',
   },
   formatDetection: {
@@ -94,10 +94,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Geo tags for local SEO */}
-        <meta name="geo.region" content="IN-KL" />
-        <meta name="geo.placename" content="Ernakulam, Kerala, India" />
-        <meta name="geo.position" content="10.0501;76.3108" />
-        <meta name="ICBM" content="10.0501, 76.3108" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Alquoz industrial area 3 Near Audi Showroom Dubai" />
+        <meta name="geo.position" content="25.1328;55.2341" />
+        <meta name="ICBM" content="25.1328, 55.2341" />
         <meta httpEquiv="Content-Language" content="en" />
         {/* LocalBusiness Schema */}
         <script
@@ -106,24 +106,22 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "Aztech LED Screens Private Limited",
+              "name": "Lamps plus",
               "image": "https://aztechledscreens.com/images/hero_led_wall_1774782256673.webp",
               "@id": "https://aztechledscreens.com/",
               "url": "https://aztechledscreens.com/",
               "telephone": "+91 73567 80866",
-              "priceRange": "₹50,000 - ₹10,00,000+",
+              "priceRange": "AED 5,000 - AED 100,000+",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "H.No.21, Kuttiyil House, Sundaragiri Road, Kalamassery",
-                "addressLocality": "Ernakulam",
-                "addressRegion": "Kerala",
-                "postalCode": "683104",
-                "addressCountry": "IN"
+                "streetAddress": "Alquoz industrial area 3 Near Audi Showroom",
+                "addressLocality": "Dubai",
+                "addressCountry": "AE"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 10.0501,
-                "longitude": 76.3108
+                "latitude": 25.1328,
+                "longitude": 55.2341
               },
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
@@ -132,8 +130,8 @@ export default function RootLayout({
                 "closes": "18:00"
               },
               "sameAs": [],
-              "description": "Aztech LED Screens Private Limited is India’s premier LED screen supplier backed by 20+ years of Dubai excellence. We supply indoor displays, outdoor billboards, transparent LED, video walls and specialty screens across India.",
-              "areaServed": ["Mumbai", "Delhi", "Bangalore", "Kochi", "Chennai", "Hyderabad", "India"],
+              "description": "Lamps plus is Dubai's premier LED screen supplier. We supply indoor displays, outdoor billboards, transparent LED, video walls and specialty screens.",
+              "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
               "knowsAbout": ["LED Screen", "Digital Signage", "Outdoor Billboard", "Video Wall", "Indoor LED Display", "Transparent LED", "Architectural Lighting"]
             })
           }}
@@ -145,12 +143,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Aztech LED",
+              "name": "Lamps plus",
               "url": "https://aztechledscreens.com/",
-              "description": "India’s #1 LED screen supplier. Indoor, outdoor, specialty LED displays and video walls.",
+              "description": "Dubai's #1 LED screen supplier. Indoor, outdoor, specialty LED displays and video walls.",
               "publisher": {
                 "@type": "Organization",
-                "name": "Aztech LED Screens Private Limited",
+                "name": "Lamps plus",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://aztechledscreens.com/icon.svg",
@@ -188,18 +186,18 @@ export default function RootLayout({
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "What is the price of an LED screen in India?",
+                  "name": "What is the price of an LED screen in Dubai?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "LED screen prices in India vary based on size, pixel pitch and type. Indoor LED screens start from ₹50,000, while large outdoor billboard displays range from ₹2,00,000 to ₹10,00,000+. Contact Aztech LED for a free custom quote."
+                    "text": "LED screen prices in Dubai vary based on size, pixel pitch and type. Contact Lamps plus for a free custom quote."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Does Aztech LED supply outdoor LED screens in India?",
+                  "name": "Does Lamps plus supply outdoor LED screens?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. Aztech LED supplies weatherproof outdoor DIP and SMD LED displays rated up to 5000 nits, suitable for billboards, building facades, and roadside signage across India."
+                    "text": "Yes. Lamps plus supplies weatherproof outdoor DIP and SMD LED displays rated up to 5000 nits, suitable for billboards, building facades, and roadside signage."
                   }
                 },
                 {
@@ -207,15 +205,15 @@ export default function RootLayout({
                   "name": "What is pixel pitch and which one should I choose?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Pixel pitch is the distance in millimetres between LED clusters. A smaller number (e.g. P1.2) means higher resolution suitable for close viewing indoors. A larger number (e.g. P6 or P10) is ideal for outdoor billboards viewed from a distance. Aztech stocks P1.2 to P10."
+                    "text": "Pixel pitch is the distance in millimetres between LED clusters. A smaller number (e.g. P1.2) means higher resolution suitable for close viewing indoors. A larger number (e.g. P6 or P10) is ideal for outdoor billboards viewed from a distance. Lamps plus stocks P1.2 to P10."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Does Aztech LED provide installation services in India?",
+                  "name": "Does Lamps plus provide installation services?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. Aztech LED has a full in-house installation team that handles site survey, structural mounting, cable routing, screen assembly, controller configuration and final commissioning across India. No subcontractors are used."
+                    "text": "Yes. Lamps plus has a full in-house installation team that handles site survey, structural mounting, cable routing, screen assembly, controller configuration and final commissioning. No subcontractors are used."
                   }
                 },
                 {
@@ -223,7 +221,7 @@ export default function RootLayout({
                   "name": "Do you offer maintenance contracts for LED screens?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. Aztech LED offers Annual Maintenance Contracts (AMC) covering preventive maintenance, emergency callouts, spare parts supply, remote monitoring and firmware updates with a 24-hour response SLA."
+                    "text": "Yes. Lamps plus offers Annual Maintenance Contracts (AMC) covering preventive maintenance, emergency callouts, spare parts supply, remote monitoring and firmware updates with a 24-hour response SLA."
                   }
                 }
               ]
