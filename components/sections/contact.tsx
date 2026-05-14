@@ -132,15 +132,16 @@ export function ContactSection() {
             {/* Company card */}
             <div className="bg-[var(--bg-secondary)] p-7 rounded-[var(--radius-md)] border border-[var(--border-light)] mb-6">
               <div className="flex flex-col mb-5">
-                <a href="/" className="inline-flex items-center mb-1 hover:opacity-80 transition-opacity w-fit">
+                <a href="/" className="inline-flex items-center gap-2 mb-1 hover:opacity-80 transition-opacity w-fit">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/lamps-plus-logo.svg"
                     alt="Lamps plus Logo"
-                    width={180}
-                    height={40}
-                    className="h-10 w-[180px] object-contain"
+                    width={36}
+                    height={36}
+                    className="w-9 h-9 object-contain flex-shrink-0"
                   />
+                  <span className="font-serif text-[26px] font-bold text-[var(--text-primary)] tracking-tight">LAMPS PLUS</span>
                 </a>
               </div>
 

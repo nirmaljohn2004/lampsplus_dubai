@@ -58,15 +58,16 @@ export function MainNav() {
         >
           <div className="h-[70px] md:h-[80px] px-6 md:px-10 flex items-center justify-between w-full">
             {/* Logo */}
-            <a href="/" className="inline-flex items-center hover:opacity-80 transition-opacity">
+            <a href="/" className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/lamps-plus-logo.svg"
                 alt="Lamps plus Logo"
-                width={180}
-                height={40}
-                className="h-10 w-[180px] object-contain flex-shrink-0"
+                width={36}
+                height={36}
+                className="w-9 h-9 object-contain flex-shrink-0"
               />
+              <span className="font-sans text-[1.1rem] font-bold text-white tracking-tight">Lamps plus</span>
             </a>
 
             {/* Desktop Nav Links */}
