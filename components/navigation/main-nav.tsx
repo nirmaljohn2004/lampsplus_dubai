@@ -63,9 +63,9 @@ export function MainNav() {
               <img
                 src="/images/lamps-plus-logo.svg"
                 alt="Lamps plus Logo"
-                width={152}
+                width={180}
                 height={40}
-                className="h-10 w-[152px] object-contain flex-shrink-0"
+                className="h-10 w-[180px] object-contain flex-shrink-0"
               />
             </a>
 

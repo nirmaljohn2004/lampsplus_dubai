@@ -137,9 +137,9 @@ export function ContactSection() {
                   <img
                     src="/images/lamps-plus-logo.svg"
                     alt="Lamps plus Logo"
-                    width={160}
-                    height={42}
-                    className="h-10 w-auto object-contain"
+                    width={180}
+                    height={40}
+                    className="h-10 w-[180px] object-contain"
                   />
                 </a>
               </div>
