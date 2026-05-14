@@ -29,7 +29,7 @@ const heroSlides = [
   },
 ]
 
-const SLIDE_DURATION = 6000
+const SLIDE_DURATION = 3000
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -86,7 +86,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 1.06 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="absolute inset-0 h-full w-full"
           >
             <Image
