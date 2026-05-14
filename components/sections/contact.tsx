@@ -132,13 +132,16 @@ export function ContactSection() {
             {/* Company card */}
             <div className="bg-[var(--bg-secondary)] p-7 rounded-[var(--radius-md)] border border-[var(--border-light)] mb-6">
               <div className="flex flex-col mb-5">
-                <div className="flex items-baseline gap-0.5">
-                  <span className="font-serif text-[26px] font-bold text-[var(--text-primary)]">LAMPS</span>
-                  <span className="font-sans text-[14px] font-semibold text-[var(--accent)]"> PLUS</span>
-                </div>
-                <span className="font-sans text-[0.85rem] text-[var(--text-muted)]">
-                  Lamps plus
-                </span>
+                <a href="/" className="inline-flex items-center mb-1 hover:opacity-80 transition-opacity w-fit">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/lamps-plus-logo.svg"
+                    alt="Lamps plus Logo"
+                    width={160}
+                    height={42}
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
               </div>
 
               {/* Corporate Identity */}

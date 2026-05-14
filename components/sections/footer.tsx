@@ -51,9 +51,9 @@ export function Footer() {
                 <img
                   src="/images/lamps-plus-logo.svg"
                   alt="Lamps plus Logo"
-                  width={160}
-                  height={42}
-                  className="h-10 w-auto object-contain flex-shrink-0"
+                  width={152}
+                  height={40}
+                  className="h-10 w-[152px] object-contain flex-shrink-0"
                 />
               </a>
               </div>
