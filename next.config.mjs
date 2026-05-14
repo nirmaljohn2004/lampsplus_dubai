@@ -12,6 +12,10 @@ const nextConfig = {
     // Serve optimised images for these common screen widths
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Allow SVG files to be served (needed for logo on Vercel)
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'inline',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Security + performance HTTP headers

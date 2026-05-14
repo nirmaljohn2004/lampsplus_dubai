@@ -1,4 +1,4 @@
-import Image from "next/image"
+
 import { Phone, Linkedin, Instagram, Facebook } from "lucide-react"
 
 const products = [
@@ -47,7 +47,8 @@ export function Footer() {
             <div className="lg:col-span-1.5 md:col-span-2 lg:col-span-1">
               <div className="flex flex-col mb-5">
               <a href="/" className="inline-flex items-center gap-2 mb-3 hover:opacity-80 transition-opacity w-fit">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/images/lamps-plus-logo.svg"
                   alt="Lamps plus Logo"
                   width={36}
