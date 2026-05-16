@@ -77,6 +77,7 @@ export function HeroSection() {
       id="home"
       className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black"
       aria-label="Lamps plus - LED Screen Supplier in Dubai"
+      style={{ position: "relative" }}
     >
       {/* Background Slides */}
       <motion.div style={{ y }} className="absolute inset-0 h-[120%] w-full -top-[10%]">

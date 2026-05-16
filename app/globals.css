@@ -77,8 +77,8 @@ html {
   --duration-lg: 0.7s;
 
   /* ── SHADOWS ── */
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-hover: 0 12px 48px rgba(255,255,255,0.05);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 12px 48px rgba(255, 255, 255, 0.05);
   --shadow-nav: 0 1px 0 var(--border-light);
 
   /* ── SHADCN COMPATIBILITY ── */
@@ -137,6 +137,7 @@ html {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     background-color: var(--bg-primary);
     color: var(--text-body);
@@ -145,16 +146,28 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: var(--text-primary);
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
-  h1, h2 {
+
+  h1,
+  h2 {
     font-family: var(--font-sans);
     font-weight: 600;
   }
-  h3, h4, h5, h6 {
+
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-sans);
     font-weight: 500;
   }
@@ -170,45 +183,62 @@ html {
     text-transform: uppercase;
     color: var(--text-secondary);
   }
-  
+
   .section-padding {
     padding-top: var(--section-pad-y);
     padding-bottom: var(--section-pad-y);
     padding-left: var(--section-pad-x);
     padding-right: var(--section-pad-x);
   }
-  
+
   .container-max {
     max-width: var(--container-max);
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   /* Marquee animation */
   @keyframes marquee-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
-  
+
   @keyframes marquee-right {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% {
+      transform: translateX(-50%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
   }
-  
+
   .animate-marquee-left {
     animation: marquee-left 35s linear infinite;
   }
-  
+
   .animate-marquee-right {
     animation: marquee-right 45s linear infinite;
   }
-  
+
   /* Pulse animation for WhatsApp button */
   @keyframes pulse-whatsapp {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.08);
+    }
   }
-  
+
   .animate-pulse-whatsapp {
     animation: pulse-whatsapp 2.5s ease-in-out infinite;
   }

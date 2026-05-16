@@ -1,121 +1,185 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { Check } from "lucide-react"
-import { useReveal } from "@/hooks/use-reveal"
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { Check, ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 const services = [
   {
-    tag: "LED Screen Supply",
-    title: "Supply Of Premium LED Displays",
-    description: "We supply the full spectrum of LED screen types — indoor, outdoor, specialty, rental and niche displays. All products come with manufacturer warranty, locally-stocked for fast dispatch across UAE. We advise on the right pixel pitch, brightness, and panel configuration for your specific environment and viewing distance.",
-    specs: ["P1.2 to P10 pixel pitch range", "1000–8000 nits brightness", "UAE-stocked, fast dispatch"],
-    imagePosition: "right",
+    id: "supply",
+    tag: "01 // Supply",
+    title: "Premium LED Displays",
+    description: "We supply the full spectrum of LED screen types — indoor, outdoor, specialty, rental and niche displays. All products come with manufacturer warranty, locally-stocked for fast dispatch across UAE.",
+    specs: ["P1.2 to P10 pixel pitch", "1000–8000 nits brightness", "UAE-stocked, fast dispatch"],
     image: "/images/service_components_1774782522853.webp",
+    colSpan: "lg:col-span-8",
+    layout: "horizontal"
   },
   {
-    tag: "Design & Fabrication",
-    title: "Custom Design & In-House Manufacturing",
-    description: "Not every space fits a standard screen. Our in-house design team creates LED solutions for any shape, size, and architectural constraint — curved screens, spherical displays, custom cabinets, and creative installations. We produce technical drawings, structural calculations, and fabrication — all under one roof.",
-    specs: ["Custom shapes: curves, spheres, cylinders", "Structural drawings provided", "Full fabrication in-house"],
-    imagePosition: "left",
+    id: "fabrication",
+    tag: "02 // Fabrication",
+    title: "Custom Design & Build",
+    description: "Our in-house design team creates LED solutions for any shape, size, and architectural constraint.",
+    specs: ["Curved & spherical", "Structural drawings", "In-house fabrication"],
     image: "/images/service_software_1774782562265.webp",
+    colSpan: "lg:col-span-4",
+    layout: "vertical"
   },
   {
-    tag: "Installation & Commissioning",
-    title: "Professional Installation Across UAE",
-    description: "Our certified installation teams manage the complete process: site survey, structural mount design, cable routing, screen assembly, controller configuration, and final commissioning test. We work to schedule, we work clean, and we don't leave until the screen performs perfectly.",
-    specs: ["Site survey included", "Certified installation engineers", "Full commissioning & handover"],
-    imagePosition: "right",
+    id: "installation",
+    tag: "03 // Installation",
+    title: "Professional Integration",
+    description: "Certified installation teams managing site surveys, structural mounts, and final commissioning.",
+    specs: ["Site surveys included", "Certified engineers", "Full commissioning"],
     image: "/images/service_install_1774782503987.webp",
+    colSpan: "lg:col-span-4",
+    layout: "vertical"
   },
   {
-    tag: "Architectural Lighting",
-    title: "Exterior & Facade LED Lighting",
-    description: "Our roots are in architectural lighting — transforming the faces of buildings, bridges, hotels and villas with programmable LED profiles and facade illumination. We have lit some of Dubai's most recognizable addresses: Downtown Dubai, Sheikh Hamdan Palace, IKEA Festival City, and Dubai Mall exteriors.",
-    specs: ["DALI & DMX programmable", "IP67/IP68 rated profiles", "Custom color temperature"],
-    imagePosition: "left",
+    id: "facade",
+    tag: "04 // Architectural",
+    title: "Facade LED Lighting",
+    description: "Transforming the faces of buildings, bridges, and hotels with programmable LED profiles.",
+    specs: ["DALI & DMX control", "IP67/IP68 rated", "Custom color temp"],
     image: "/images/service_facade_1774782541436.webp",
+    colSpan: "lg:col-span-4",
+    layout: "vertical"
   },
   {
-    tag: "After-Sales & AMC",
-    title: "Ongoing Maintenance & Support",
-    description: "LED screens are long-term investments. We protect that investment with Annual Maintenance Contracts (AMC) covering preventive maintenance, emergency callouts, spare parts, and remote monitoring. Our UAE-based support team responds within 24 hours to any fault — minimizing downtime for your business.",
-    specs: ["AMC contracts available", "24hr response SLA", "Spare parts in UAE stock"],
-    imagePosition: "right",
+    id: "maintenance",
+    tag: "05 // Support",
+    title: "Ongoing Maintenance",
+    description: "Protecting your investment with Annual Maintenance Contracts covering emergency callouts and repairs.",
+    specs: ["AMC available", "24hr response SLA", "UAE spare parts stock"],
     image: "/images/service_maintenance_1774782580512.webp",
+    colSpan: "lg:col-span-4",
+    layout: "vertical"
   },
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 1, 0.5, 1] }
+  }
+}
+
 export function ServicesSection() {
-  const { ref, isVisible } = useReveal()
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-10% 0px" })
 
   return (
-    <section 
-      ref={ref}
-      id="services" 
-      className={`section-padding bg-[var(--bg-secondary)] reveal-section ${isVisible ? "visible" : ""}`}
+    <section
+      ref={sectionRef}
+      id="services"
+      className="py-24 lg:py-32 bg-[#050505] relative overflow-hidden"
       aria-label="Our services"
     >
-      <div className="max-w-[var(--container-max)] mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="eyebrow mb-3">OUR SERVICES</p>
-          <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.15] text-[var(--text-primary)]">
-            What We Do For You
-          </h2>
-        </div>
+      {/* Subtle background element */}
+      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-[#E000D0] opacity-[0.02] blur-[120px] rounded-full pointer-events-none" />
 
-        {/* Services List */}
-        <div className="flex flex-col gap-6">
-          {services.map((service, index) => (
-            <div 
-              key={service.title}
-              className="bg-white rounded-[var(--radius-md)] overflow-hidden"
+      <div className="max-w-[var(--container-max)] mx-auto px-[var(--section-pad-x)] relative z-10 w-full">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16 lg:mb-24 max-w-3xl"
+        >
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="w-12 h-[2px] bg-[#E000D0]" />
+            <p className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-[#E000D0] uppercase">
+              Our Expertise
+            </p>
+          </div>
+          <h2 className="font-serif text-[clamp(2.5rem,4vw,4.5rem)] font-normal text-white leading-[1.1] tracking-tight">
+            Comprehensive <br />
+            <span className="text-white/40 italic">LED Solutions.</span>
+          </h2>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+        >
+          {services.map((service, idx) => (
+            <motion.div
+              key={service.id}
+              variants={itemVariants}
+              className={`
+                group bg-[#111111] border border-white/5 rounded-[24px] overflow-hidden flex shadow-2xl hover:border-white/10 transition-colors duration-500
+                ${service.colSpan}
+                ${service.layout === 'horizontal' ? 'flex-col md:flex-row' : 'flex-col'}
+              `}
             >
-              <div className={`grid lg:grid-cols-2 ${service.imagePosition === "left" ? "lg:grid-flow-dense" : ""}`}>
-                {/* Content */}
-                <div className={`p-8 lg:p-12 flex flex-col justify-center ${service.imagePosition === "left" ? "lg:col-start-2" : ""}`}>
-                  <span className="inline-block self-start font-sans text-[0.72rem] font-semibold px-3 py-1 bg-[var(--accent-light)] text-[var(--accent)] rounded-[var(--radius-full)] mb-4">
+              {/* Content Side */}
+              <div className={`
+                p-8 lg:p-12 flex flex-col justify-between
+                ${service.layout === 'horizontal' ? 'md:w-1/2 order-2 md:order-1' : 'flex-1 order-2'}
+              `}>
+                <div>
+                  <span className="inline-block font-sans text-[0.7rem] font-bold uppercase tracking-[0.15em] text-[#E000D0] mb-5">
                     {service.tag}
                   </span>
-                  
-                  <h3 className="font-sans text-[1.4rem] font-bold text-gray-900 mb-4">
+
+                  <h3 className="font-serif text-[clamp(1.5rem,2vw,2rem)] font-normal text-white leading-tight mb-4">
                     {service.title}
                   </h3>
-                  
-                  <p className="font-sans text-[0.95rem] leading-[1.75] text-gray-700 mb-6">
+
+                  <p className="font-sans text-[0.95rem] text-white/50 leading-relaxed mb-8">
                     {service.description}
                   </p>
-                  
-                  <ul className="flex flex-col gap-2">
-                    {service.specs.map((spec) => (
-                      <li key={spec} className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-[var(--success)]" aria-hidden="true" />
-                        <span className="font-sans text-[0.88rem] text-gray-700">
-                          {spec}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-                
-                {/* Service image */}
-                <div className={`aspect-[4/3] lg:aspect-auto relative overflow-hidden ${service.imagePosition === "left" ? "lg:col-start-1" : ""}`}>
-                  <Image 
-                    src={service.image}
-                    alt={`${service.title} - LED screen services in UAE`}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="lazy"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+
+                <ul className="flex flex-col gap-3">
+                  {service.specs.map((spec) => (
+                    <li key={spec} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center shrink-0 mt-[2px]">
+                        <Check className="w-3 h-3 text-[#E000D0]" />
+                      </div>
+                      <span className="font-sans text-[0.85rem] text-white/70">
+                        {spec}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+
+              {/* Image Side */}
+              <div className={`
+                relative overflow-hidden
+                ${service.layout === 'horizontal' ? 'md:w-1/2 min-h-[300px] order-1 md:order-2' : 'h-[240px] lg:h-[280px] w-full order-1'}
+              `}>
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-[0.25,1,0.5,1] group-hover:scale-105"
+                  fill
+                  sizes={service.layout === 'horizontal' ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 100vw, 33vw"}
+                  loading={idx < 2 ? "eager" : "lazy"}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

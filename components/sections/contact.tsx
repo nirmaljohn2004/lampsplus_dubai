@@ -1,8 +1,8 @@
 "use client"
 
 import { useRef, useState, FormEvent } from "react"
-import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle, AlertCircle } from "lucide-react"
-import { useReveal } from "@/hooks/use-reveal"
+import { motion, useInView } from "framer-motion"
+import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle, AlertCircle, MessageSquare } from "lucide-react"
 
 const serviceOptions = [
   "Select a service...",
@@ -49,8 +49,15 @@ const sourceOptions = [
   "Other",
 ]
 
+const inputClass =
+  "w-full px-4 py-3.5 bg-[#0a0a0a] border border-white/10 rounded-[12px] font-sans text-[0.9rem] text-white placeholder-white/25 focus:border-[#E000D0]/60 focus:outline-none focus:ring-1 focus:ring-[#E000D0]/30 transition-all duration-200"
+
+const labelClass =
+  "block font-sans text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-white/40 mb-2"
+
 export function ContactSection() {
-  const { ref, isVisible } = useReveal()
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-10% 0px" })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
@@ -63,18 +70,17 @@ export function ContactSection() {
 
     const form = formRef.current!
     const data = {
-      name:     (form.elements.namedItem('name')    as HTMLInputElement).value.trim(),
-      company:  (form.elements.namedItem('company') as HTMLInputElement).value.trim(),
-      email:    (form.elements.namedItem('email')   as HTMLInputElement).value.trim(),
-      phone:    (form.elements.namedItem('phone')   as HTMLInputElement).value.trim(),
-      service:  (form.elements.namedItem('service') as HTMLSelectElement).value,
+      name: (form.elements.namedItem('name') as HTMLInputElement).value.trim(),
+      company: (form.elements.namedItem('company') as HTMLInputElement).value.trim(),
+      email: (form.elements.namedItem('email') as HTMLInputElement).value.trim(),
+      phone: (form.elements.namedItem('phone') as HTMLInputElement).value.trim(),
+      service: (form.elements.namedItem('service') as HTMLSelectElement).value,
       location: (form.elements.namedItem('location') as HTMLSelectElement).value,
-      budget:   (form.elements.namedItem('budget')  as HTMLSelectElement).value,
-      source:   (form.elements.namedItem('source')  as HTMLSelectElement).value,
-      message:  (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim(),
+      budget: (form.elements.namedItem('budget') as HTMLSelectElement).value,
+      source: (form.elements.namedItem('source') as HTMLSelectElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim(),
     }
 
-    // Basic validation
     if (!data.name || !data.email || !data.phone || !data.service) {
       setErrorMsg('Please fill in all required fields.')
       setIsSubmitting(false)
@@ -108,305 +114,288 @@ export function ContactSection() {
   }
 
   return (
-    <section 
-      ref={ref}
-      id="contact" 
-      className={`section-padding bg-[var(--bg-primary)] reveal-section ${isVisible ? "visible" : ""}`}
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="py-24 lg:py-32 bg-[#050505] relative overflow-hidden"
       aria-label="Contact Lamps plus Dubai — Get a Free Quote"
     >
-      <div className="max-w-[var(--container-max)] mx-auto">
+      {/* Background glow */}
+      <div className="absolute bottom-0 right-[-5%] w-[600px] h-[600px] bg-[#E000D0] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-[#E000D0] opacity-[0.02] blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-[var(--container-max)] mx-auto px-[var(--section-pad-x)] relative z-10">
+
         {/* Header */}
-        <div className="text-center mb-12">
-          <p className="eyebrow mb-3">GET IN TOUCH</p>
-          <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.15] text-[var(--text-primary)] mb-4">
-            Request a Free Quote
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16 lg:mb-20 max-w-3xl"
+        >
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="w-12 h-[2px] bg-[#E000D0]" />
+            <p className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-[#E000D0] uppercase">
+              Get In Touch
+            </p>
+          </div>
+          <h2 className="font-serif text-[clamp(2.5rem,4vw,4.5rem)] font-normal text-white leading-[1.1] tracking-tight">
+            Start Your <br />
+            <span className="text-white/40 italic">Project Today.</span>
           </h2>
-          <p className="font-sans text-[1rem] leading-[1.75] text-[var(--text-secondary)] max-w-[600px] mx-auto">
+          <p className="mt-6 font-sans text-[1rem] text-white/50 leading-relaxed max-w-xl">
             Tell us about your LED screen project and we&apos;ll respond within 24 hours with a detailed proposal.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-[45%_55%] gap-10 lg:gap-16">
-          {/* Contact Info - Left */}
-          <div>
+        {/* Two-column layout */}
+        <div className="grid lg:grid-cols-[38%_62%] gap-6 lg:gap-8 items-stretch">
+
+          {/* LEFT — Contact info + Map */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
+            className="flex flex-col gap-6 h-full"
+          >
             {/* Company card */}
-            <div className="bg-[var(--bg-secondary)] p-7 rounded-[var(--radius-md)] border border-[var(--border-light)] mb-6">
-              <div className="flex flex-col mb-5">
-                <a href="/" className="inline-flex items-center gap-2 mb-1 hover:opacity-80 transition-opacity w-fit">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/lamps-plus-logo.svg"
-                    alt="Lamps plus Logo"
-                    width={36}
-                    height={36}
-                    className="w-9 h-9 object-contain flex-shrink-0"
-                  />
-                  <span className="font-serif text-[26px] font-bold text-[var(--text-primary)] tracking-tight">LAMPS PLUS</span>
-                </a>
-              </div>
+            <div className="bg-[#111111] border border-white/5 rounded-[24px] p-8 flex flex-col gap-6">
+              {/* Logo + name */}
+              <a href="/" className="inline-flex items-center gap-3 w-fit hover:opacity-80 transition-opacity">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/lamps-plus-logo.svg"
+                  alt="Lamps plus Logo"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 object-contain"
+                />
+                <span className="font-serif text-[1.3rem] font-bold text-white tracking-tight">LAMPS PLUS</span>
+              </a>
 
-              {/* Corporate Identity */}
-              <div className="flex flex-col gap-2 mb-5 p-4 bg-[var(--bg-secondary)] rounded-[var(--radius-sm)] border border-[var(--border-light)]">
-                <div className="flex items-start gap-2">
-                  <span className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[var(--accent)] whitespace-nowrap mt-0.5">Head Office</span>
-                  <span className="font-sans text-[0.82rem] text-[var(--text-body)] leading-[1.5]">
-                    Lamps plus, Dubai, UAE
-                  </span>
-                </div>
-              </div>
+              <div className="h-[1px] bg-white/5" />
 
-              <div className="flex flex-col gap-4">
-                <a href="https://www.google.com/maps/search/?api=1&query=Alquoz+industrial+area+3+Near+Audi+Showroom+Dubai" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
-                  <MapPin className="w-[18px] h-[18px] text-[var(--accent-mid)] mt-1 shrink-0" aria-hidden="true" />
-                  <address className="font-sans text-[0.9rem] text-[var(--text-body)] not-italic leading-[1.6] group-hover:text-[var(--accent)] transition-colors">
+              {/* Contact details */}
+              <div className="flex flex-col gap-5">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Alquoz+industrial+area+3+Near+Audi+Showroom+Dubai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 transition-all">
+                    <MapPin className="w-4 h-4 text-white/40 group-hover:text-[#E000D0] transition-colors" />
+                  </div>
+                  <address className="font-sans text-[0.9rem] text-white/60 not-italic leading-relaxed group-hover:text-white/90 transition-colors">
                     Alquoz industrial area 3,<br />
-                    Near Audi Showroom,<br />
-                    Dubai
+                    Near Audi Showroom, Dubai
                   </address>
                 </a>
-                
-                <a href="tel:+917356780866" className="flex items-center gap-3 group">
-                  <Phone className="w-[18px] h-[18px] text-[var(--accent-mid)] shrink-0" aria-hidden="true" />
-                  <span className="font-sans text-[0.9rem] text-[var(--text-body)] group-hover:text-[var(--accent)] transition-colors">
+
+                <a href="tel:+917356780866" className="flex items-center gap-4 group">
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 transition-all">
+                    <Phone className="w-4 h-4 text-white/40 group-hover:text-[#E000D0] transition-colors" />
+                  </div>
+                  <span className="font-sans text-[0.9rem] text-white/60 group-hover:text-white/90 transition-colors">
                     +91 73567 80866
                   </span>
                 </a>
-                
-                <a href="https://wa.me/971561425339" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px] text-[var(--accent-mid)] shrink-0" aria-hidden="true">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                  </svg>
-                  <span className="font-sans text-[0.9rem] text-[var(--text-body)] group-hover:text-[var(--accent)] transition-colors">
+
+                <a
+                  href="https://wa.me/971561425339"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#25D366]/10 group-hover:border-[#25D366]/30 transition-all">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white/40 group-hover:text-[#25D366] transition-colors" aria-hidden="true">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                  </div>
+                  <span className="font-sans text-[0.9rem] text-white/60 group-hover:text-white/90 transition-colors">
                     +971 56 142 5339
                   </span>
                 </a>
-                
-                <a href="mailto:sales@az-tech.ae" className="flex items-center gap-3 group">
-                  <Mail className="w-[18px] h-[18px] text-[var(--accent-mid)] shrink-0" aria-hidden="true" />
-                  <span className="font-sans text-[0.9rem] text-[var(--text-body)] group-hover:text-[var(--accent)] transition-colors">
+
+                <a href="mailto:sales@az-tech.ae" className="flex items-center gap-4 group">
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 transition-all">
+                    <Mail className="w-4 h-4 text-white/40 group-hover:text-[#E000D0] transition-colors" />
+                  </div>
+                  <span className="font-sans text-[0.9rem] text-white/60 group-hover:text-white/90 transition-colors">
                     sales@az-tech.ae
                   </span>
                 </a>
-                
-                <div className="flex items-center gap-3">
-                  <Clock className="w-[18px] h-[18px] text-[var(--accent-mid)] shrink-0" aria-hidden="true" />
-                  <span className="font-sans text-[0.9rem] text-[var(--text-body)]">
+
+                <div className="flex items-center gap-4">
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 text-white/40" />
+                  </div>
+                  <span className="font-sans text-[0.9rem] text-white/60">
                     Mon–Sat: 8:00 AM – 6:00 PM
                   </span>
                 </div>
               </div>
             </div>
-            
-            {/* Map embed */}
-            <div className="aspect-[4/3] rounded-[var(--radius-md)] border border-[var(--border-light)] overflow-hidden mb-6">
+
+            {/* Map */}
+            <div className="rounded-[24px] overflow-hidden border border-white/5 flex-1 min-h-[220px]">
               <iframe
                 title="Lamps plus office location in Dubai"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14446.591244589258!2d55.2255!3d25.1432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6a1e34b8c6bb%3A0x8bbd30c51e06c7e3!2sAl%20Quoz%20Industrial%20Area%203%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            
-            {/* WhatsApp CTA */}
-            <div className="bg-[var(--success-bg)] border border-[rgba(26,107,60,0.2)] rounded-[var(--radius-md)] p-5">
-              <h3 className="font-sans text-[0.9rem] font-semibold text-[var(--success)] mb-1">
-                Prefer WhatsApp?
-              </h3>
-              <p className="font-sans text-[0.85rem] text-[var(--text-body)] mb-4">
-                Chat with our sales team instantly. Fast response guaranteed.
-              </p>
-              <a 
-                href="https://wa.me/971561425339?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20LED%20screens."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] text-white font-sans text-[0.85rem] font-semibold px-5 py-3 rounded-[var(--radius-sm)] hover:bg-[#1da851] transition-colors"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Chat on WhatsApp
-              </a>
-            </div>
-          </div>
 
-          {/* Form - Right */}
-          <div className="bg-[var(--bg-secondary)] p-8 lg:p-10 rounded-[var(--radius-lg)] border border-[var(--border-light)]">
+            {/* WhatsApp CTA */}
+            <a
+              href="https://wa.me/971561425339?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20LED%20screens."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 bg-[#111111] border border-white/5 rounded-[24px] p-6 hover:border-[#25D366]/30 transition-all duration-300"
+            >
+              <div className="w-11 h-11 rounded-full bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center shrink-0 group-hover:bg-[#25D366]/20 transition-all">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#25D366]" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="font-sans text-[0.85rem] font-semibold text-white mb-0.5">Prefer WhatsApp?</p>
+                <p className="font-sans text-[0.8rem] text-white/50">Chat with our team instantly</p>
+              </div>
+              <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-[#25D366] group-hover:translate-x-1 transition-all duration-300" />
+            </a>
+          </motion.div>
+
+          {/* RIGHT — Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 1, 0.5, 1] }}
+            className="bg-[#111111] border border-white/5 rounded-[24px] p-8 lg:p-12 flex flex-col"
+          >
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full py-12 text-center">
-                <div className="w-16 h-16 rounded-full bg-[var(--success-bg)] flex items-center justify-center mb-6">
-                  <CheckCircle className="w-8 h-8 text-[var(--success)]" />
+              <div className="flex flex-col items-center justify-center py-20 text-center gap-6">
+                <div className="w-16 h-16 rounded-full bg-[#E000D0]/10 border border-[#E000D0]/20 flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-[#E000D0]" />
                 </div>
-                <h3 className="font-sans text-[1.2rem] font-semibold text-[var(--text-primary)] mb-2">
-                  Gmail Opened!
-                </h3>
-                <p className="font-sans text-[1rem] text-[var(--text-body)] mb-6">
-                  A Gmail compose window has opened with your enquiry pre-filled. Just hit <strong>Send</strong> and our team at <strong>sales@az-tech.ae</strong> will get back to you within 24 hours.
-                </p>
-                <a 
-                  href="#projects" 
-                  className="inline-flex items-center gap-1 font-sans text-[0.9rem] font-medium text-[var(--accent)] hover:underline"
+                <div>
+                  <h3 className="font-serif text-[1.6rem] font-normal text-white mb-3">Gmail Opened!</h3>
+                  <p className="font-sans text-[0.95rem] text-white/60 leading-relaxed max-w-md">
+                    A Gmail compose window has opened with your enquiry pre-filled. Just hit <strong className="text-white">Send</strong> and our team at <strong className="text-white">sales@az-tech.ae</strong> will get back to you within 24 hours.
+                  </p>
+                </div>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 font-sans text-[0.85rem] font-bold tracking-[0.15em] uppercase text-white/50 hover:text-[#E000D0] transition-colors"
                 >
-                  In the meantime, explore our projects
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="w-6 h-[1px] bg-current" />
+                  Explore our projects
                 </a>
               </div>
             ) : (
-              <form ref={formRef} onSubmit={handleSubmit} noValidate>
-                <h3 className="font-sans text-[1.2rem] font-semibold text-[var(--text-primary)] mb-6">
-                  Send Us a Project Enquiry
-                </h3>
-                
-                <div className="grid gap-5">
+              <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col flex-1">
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="w-9 h-9 rounded-full bg-[#E000D0]/10 border border-[#E000D0]/20 flex items-center justify-center shrink-0">
+                    <MessageSquare className="w-4 h-4 text-[#E000D0]" />
+                  </div>
+                  <h3 className="font-serif text-[1.4rem] font-normal text-white">
+                    Send Us a Project Enquiry
+                  </h3>
+                </div>
+
+                <div className="grid gap-6 flex-1">
                   {/* Name & Company */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Full Name <span className="text-[var(--copper)]">*</span>
+                      <label htmlFor="name" className={labelClass}>
+                        Full Name <span className="text-[#E000D0]">*</span>
                       </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors"
-                      />
+                      <input type="text" id="name" name="name" required className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors"
-                      />
+                      <label htmlFor="company" className={labelClass}>Company Name</label>
+                      <input type="text" id="company" name="company" className={inputClass} />
                     </div>
                   </div>
-                  
+
                   {/* Email & Phone */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="email" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Email Address <span className="text-[var(--copper)]">*</span>
+                      <label htmlFor="email" className={labelClass}>
+                        Email Address <span className="text-[#E000D0]">*</span>
                       </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors"
-                      />
+                      <input type="email" id="email" name="email" required className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Phone / WhatsApp <span className="text-[var(--copper)]">*</span>
+                      <label htmlFor="phone" className={labelClass}>
+                        Phone / WhatsApp <span className="text-[#E000D0]">*</span>
                       </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        placeholder="+91 XXXXX XXXXX"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors"
-                      />
+                      <input type="tel" id="phone" name="phone" required placeholder="+971 XXXXX XXXXX" className={inputClass} />
                     </div>
                   </div>
-                  
+
                   {/* Service & Location */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="service" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Service Required <span className="text-[var(--copper)]">*</span>
+                      <label htmlFor="service" className={labelClass}>
+                        Service Required <span className="text-[#E000D0]">*</span>
                       </label>
-                      <select
-                        id="service"
-                        name="service"
-                        required
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
-                      >
-                        {serviceOptions.map((option) => (
-                          <option key={option} value={option === "Select a service..." ? "" : option}>
-                            {option}
-                          </option>
+                      <select id="service" name="service" required className={inputClass}>
+                        {serviceOptions.map((o) => (
+                          <option key={o} value={o === "Select a service..." ? "" : o}>{o}</option>
                         ))}
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="location" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Project Location
-                      </label>
-                      <select
-                        id="location"
-                        name="location"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
-                      >
-                        {locationOptions.map((option) => (
-                          <option key={option} value={option === "Select district..." ? "" : option}>
-                            {option}
-                          </option>
+                      <label htmlFor="location" className={labelClass}>Project Location</label>
+                      <select id="location" name="location" className={inputClass}>
+                        {locationOptions.map((o) => (
+                          <option key={o} value={o === "Select location..." ? "" : o}>{o}</option>
                         ))}
                       </select>
                     </div>
                   </div>
-                  
+
                   {/* Budget & Source */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="budget" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        Approximate Budget
-                      </label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
-                      >
-                        {budgetOptions.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
+                      <label htmlFor="budget" className={labelClass}>Approximate Budget</label>
+                      <select id="budget" name="budget" className={inputClass}>
+                        {budgetOptions.map((o) => (
+                          <option key={o} value={o}>{o}</option>
                         ))}
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="source" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                        How did you hear about us?
-                      </label>
-                      <select
-                        id="source"
-                        name="source"
-                        className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors bg-[var(--bg-primary)]"
-                      >
-                        {sourceOptions.map((option) => (
-                          <option key={option} value={option === "How did you hear about us?" ? "" : option}>
-                            {option}
-                          </option>
+                      <label htmlFor="source" className={labelClass}>How Did You Hear About Us?</label>
+                      <select id="source" name="source" className={inputClass}>
+                        {sourceOptions.map((o) => (
+                          <option key={o} value={o === "How did you hear about us?" ? "" : o}>{o}</option>
                         ))}
                       </select>
                     </div>
                   </div>
-                  
+
                   {/* Message */}
                   <div>
-                    <label htmlFor="message" className="block font-sans text-[0.82rem] font-medium text-[var(--text-body)] mb-1.5">
-                      Project Details / Message
-                    </label>
+                    <label htmlFor="message" className={labelClass}>Project Details / Message</label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={4}
+                      rows={5}
                       placeholder="Tell us about your project — screen size, location, viewing distance, timeline..."
-                      className="w-full px-4 py-3 font-sans text-[0.9rem] border border-[var(--border-medium)] rounded-[var(--radius-sm)] focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"
+                      className={`${inputClass} resize-none`}
                     />
                   </div>
-                  
-                  {/* Error message */}
+
+                  {/* Error */}
                   {errorMsg && (
-                    <div className="flex items-start gap-2 bg-red-50 border border-red-200 text-red-700 rounded-[var(--radius-sm)] px-4 py-3">
+                    <div className="flex items-start gap-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-[12px] px-4 py-3">
                       <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
                       <p className="font-sans text-[0.85rem] leading-[1.5]">{errorMsg}</p>
                     </div>
@@ -416,18 +405,18 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 bg-[var(--accent)] text-white font-sans text-[0.9rem] font-semibold tracking-[0.04em] rounded-[var(--radius-sm)] hover:bg-[var(--accent-hover)] hover:-translate-y-[1px] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full py-4 bg-[#E000D0] text-white font-sans text-[0.9rem] font-semibold tracking-[0.04em] rounded-[14px] hover:bg-[#C000B0] hover:-translate-y-[1px] transition-all duration-200 shadow-[0_0_30px_rgba(224,0,208,0.3)] hover:shadow-[0_0_40px_rgba(224,0,208,0.5)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
                   >
                     {isSubmitting ? "Sending…" : "Send My Enquiry"}
                   </button>
-                  
-                  <p className="font-sans text-[0.78rem] text-[var(--text-muted)] text-center">
-                    We respond within 24 hours. Your information is private and never shared.
+
+                  <p className="font-sans text-[0.75rem] text-white/25 text-center">
+                    We respond within 24 hours · Your information is private and never shared
                   </p>
                 </div>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
