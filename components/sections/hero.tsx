@@ -122,8 +122,8 @@ export function HeroSection() {
           >
             {/* Tag pill */}
             <div className="inline-flex items-center gap-2 mb-6">
-              <span className="w-8 h-[2px] bg-[#E000D0]" />
-              <span className="font-sans text-[0.75rem] font-bold uppercase tracking-[0.2em] text-[#E000D0]">
+              <span className="w-8 h-[2px] bg-[#E60000]" />
+              <span className="font-sans text-[0.75rem] font-bold uppercase tracking-[0.2em] text-[#E60000]">
                 {slide.tag}
               </span>
             </div>
@@ -142,7 +142,7 @@ export function HeroSection() {
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#E000D0] text-white font-sans text-[0.9rem] font-semibold rounded-full hover:bg-[#C000B0] transition-all duration-200 shadow-[0_0_30px_rgba(224,0,208,0.35)] hover:shadow-[0_0_40px_rgba(224,0,208,0.5)] hover:scale-[1.03]"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#E60000] text-white font-sans text-[0.9rem] font-semibold rounded-full hover:bg-[#CC0000] transition-all duration-200 shadow-[0_0_30px_rgba(230,0,0,0.35)] hover:shadow-[0_0_40px_rgba(230,0,0,0.5)] hover:scale-[1.03]"
               >
                 Get a Free Quote
                 <ArrowRight className="w-4 h-4" />
@@ -177,7 +177,7 @@ export function HeroSection() {
                     initial={{ width: "0%" }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0, ease: "linear" }}
-                    className="absolute left-0 top-0 h-full bg-[#E000D0] rounded-full"
+                    className="absolute left-0 top-0 h-full bg-[#E60000] rounded-full"
                     style={{ width: `${progress}%` }}
                   />
                 )}

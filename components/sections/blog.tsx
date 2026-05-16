@@ -37,7 +37,7 @@ export function BlogSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-16"
         >
-          <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E000D0] uppercase mb-4">
+          <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E60000] uppercase mb-4">
             KNOWLEDGE HUB
           </p>
           <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] font-medium text-white leading-[1.05] tracking-tight">
@@ -87,7 +87,7 @@ export function BlogSection() {
                     <span>{posts[currentIndex].readTime}</span>
                   </div>
                   
-                  <h3 className="font-serif text-[clamp(2rem,3vw,3rem)] font-medium text-white leading-[1.1] mb-6 hover:text-[#E000D0] transition-colors">
+                  <h3 className="font-serif text-[clamp(2rem,3vw,3rem)] font-medium text-white leading-[1.1] mb-6 hover:text-[#E60000] transition-colors">
                     <a href={`/blog/${posts[currentIndex].slug}`}>{posts[currentIndex].title}</a>
                   </h3>
                   
@@ -98,7 +98,7 @@ export function BlogSection() {
                   <div className="mt-auto">
                     <a 
                       href={`/blog/${posts[currentIndex].slug}`}
-                      className="inline-flex items-center gap-3 font-sans text-[0.85rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E000D0] transition-colors group"
+                      className="inline-flex items-center gap-3 font-sans text-[0.85rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E60000] transition-colors group"
                     >
                       <span className="w-10 h-[1px] bg-current" />
                       Read Full Article 
@@ -129,7 +129,7 @@ export function BlogSection() {
                 onClick={() => setCurrentIndex(idx)}
                 className={`transition-all duration-500 rounded-full ${
                   currentIndex === idx 
-                    ? "w-10 h-1.5 bg-[#E000D0]" 
+                    ? "w-10 h-1.5 bg-[#E60000]" 
                     : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
@@ -139,7 +139,7 @@ export function BlogSection() {
 
           <button
             onClick={handleNext}
-            className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E000D0] text-white hover:bg-white hover:text-black transition-all duration-300 font-sans text-sm font-semibold"
+            className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E60000] text-white hover:bg-white hover:text-black transition-all duration-300 font-sans text-sm font-semibold"
             aria-label="Next article"
           >
             Next

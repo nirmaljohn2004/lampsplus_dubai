@@ -66,7 +66,7 @@ export function ProductsSection() {
       className="bg-[#050505] relative overflow-hidden min-h-[100svh] flex flex-col justify-center py-12 lg:py-0"
     >
       {/* Subtle background glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E000D0] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E60000] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-[var(--container-max)] mx-auto px-[var(--section-pad-x)] relative z-10 w-full">
         
@@ -77,7 +77,7 @@ export function ProductsSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-10 lg:mb-16"
         >
-          <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E000D0] uppercase mb-4">
+          <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E60000] uppercase mb-4">
             Our Technologies
           </p>
           <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] font-medium text-white leading-[1.05] tracking-tight max-w-4xl">
@@ -101,7 +101,7 @@ export function ProductsSection() {
                     <div className="flex items-start gap-4 lg:gap-6">
                       <span className={`
                         font-sans text-xs font-bold tracking-widest mt-1.5 transition-colors duration-500
-                        ${isActive ? 'text-[#E000D0]' : 'text-white/20 group-hover:text-white/50'}
+                        ${isActive ? 'text-[#E60000]' : 'text-white/20 group-hover:text-white/50'}
                       `}>
                         0{idx + 1}
                       </span>
@@ -130,7 +130,7 @@ export function ProductsSection() {
                                 <div className="mt-5">
                                   <a 
                                     href="#contact" 
-                                    className="inline-flex items-center gap-2 font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E000D0] transition-colors"
+                                    className="inline-flex items-center gap-2 font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E60000] transition-colors"
                                   >
                                     <span className="w-6 h-[1px] bg-current" />
                                     Explore Specs

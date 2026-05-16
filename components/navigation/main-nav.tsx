@@ -87,7 +87,7 @@ export function MainNav() {
                     {link.hasDropdown && (
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.dropdownType ? "rotate-180" : ""}`} />
                     )}
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#E000D0] transition-all duration-200 group-hover:w-full" />
+                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#E60000] transition-all duration-200 group-hover:w-full" />
                   </a>
                 </div>
               ))}
@@ -97,7 +97,7 @@ export function MainNav() {
             <div className="hidden lg:block">
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 bg-[#E000D0] text-white font-sans text-[0.85rem] font-bold tracking-wider uppercase rounded-full hover:bg-[#C000B0] hover:scale-105 transition-all duration-200 shadow-[0_0_15px_rgba(224,0,208,0.3)]"
+                className="inline-flex items-center px-6 py-3 bg-[#E60000] text-white font-sans text-[0.85rem] font-bold tracking-wider uppercase rounded-full hover:bg-[#CC0000] hover:scale-105 transition-all duration-200 shadow-[0_0_15px_rgba(230,0,0,0.3)]"
               >
                 Get in Touch
               </a>
@@ -154,7 +154,7 @@ export function MainNav() {
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   aria-label="Close menu"
-                  className="p-2 text-white hover:text-[#E000D0] transition-colors"
+                  className="p-2 text-white hover:text-[#E60000] transition-colors"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -165,7 +165,7 @@ export function MainNav() {
                   <a
                     key={link.label}
                     href={link.href}
-                    className="font-sans text-xl font-semibold text-white hover:text-[#E000D0] transition-colors"
+                    className="font-sans text-xl font-semibold text-white hover:text-[#E60000] transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
@@ -174,7 +174,7 @@ export function MainNav() {
                 
                 <a
                   href="#contact"
-                  className="mt-8 inline-flex items-center justify-center px-6 py-4 bg-[#E000D0] text-white font-sans text-sm tracking-widest uppercase font-bold rounded-full"
+                  className="mt-8 inline-flex items-center justify-center px-6 py-4 bg-[#E60000] text-white font-sans text-sm tracking-widest uppercase font-bold rounded-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get in Touch

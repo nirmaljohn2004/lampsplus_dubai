@@ -76,8 +76,8 @@ export function PortfolioSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-12 border-b border-white/10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-3 mb-6">
-              <span className="w-12 h-[2px] bg-[#E000D0]" />
-              <p className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-[#E000D0] uppercase">Our Work</p>
+              <span className="w-12 h-[2px] bg-[#E60000]" />
+              <p className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-[#E60000] uppercase">Our Work</p>
             </div>
             <h2 className="font-serif text-[clamp(3rem,5vw,4.5rem)] font-normal text-white leading-tight">
               Selected Projects
@@ -126,7 +126,7 @@ export function PortfolioSection() {
                 
                 {/* View Project button on hover */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="opacity-0 group-hover/img:opacity-100 scale-90 group-hover/img:scale-100 transition-all duration-500 flex items-center gap-3 bg-[#E000D0] text-white px-8 py-4 rounded-full font-sans text-sm font-bold tracking-wide shadow-2xl">
+                  <div className="opacity-0 group-hover/img:opacity-100 scale-90 group-hover/img:scale-100 transition-all duration-500 flex items-center gap-3 bg-[#E60000] text-white px-8 py-4 rounded-full font-sans text-sm font-bold tracking-wide shadow-2xl">
                     View Project <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export function PortfolioSection() {
                 {/* Bottom content info overlaid on image */}
                 <div className="absolute bottom-0 left-0 right-0 p-10 translate-y-4 group-hover/img:translate-y-0 opacity-100 transition-all duration-500">
                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full mb-4 border border-white/20">
-                     <span className="w-2 h-2 rounded-full bg-[#E000D0]" />
+                     <span className="w-2 h-2 rounded-full bg-[#E60000]" />
                      <span className="font-sans text-xs font-semibold text-white uppercase tracking-wider">{activeProject.category}</span>
                    </div>
                    <h3 className="font-serif text-4xl text-white mb-2">{activeProject.name}</h3>
@@ -173,12 +173,12 @@ export function PortfolioSection() {
                   <div className={`absolute inset-0 bg-gradient-to-r from-white/5 to-transparent transition-opacity duration-500 -z-10 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
                   
                   {/* Active indicator line */}
-                  <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#E000D0] transition-transform duration-500 origin-top ${isActive ? 'scale-y-100' : 'scale-y-0'}`} />
+                  <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#E60000] transition-transform duration-500 origin-top ${isActive ? 'scale-y-100' : 'scale-y-0'}`} />
 
                   <div className={`flex justify-between items-center px-6 lg:px-10 transition-transform duration-500 ${isActive ? 'translate-x-4' : 'group-hover:translate-x-2'}`}>
                     <div className="flex items-center gap-8">
                       {/* Numbering */}
-                      <span className={`font-sans text-sm font-bold tracking-widest transition-colors duration-500 ${isActive ? 'text-[#E000D0]' : 'text-white/20'}`}>
+                      <span className={`font-sans text-sm font-bold tracking-widest transition-colors duration-500 ${isActive ? 'text-[#E60000]' : 'text-white/20'}`}>
                         {String(idx + 1).padStart(2, '0')}
                       </span>
                       <div>
@@ -223,7 +223,7 @@ export function PortfolioSection() {
               </div>
               <div className="px-2">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-sans text-[0.65rem] font-bold text-[#E000D0] uppercase tracking-widest">{project.category}</span>
+                  <span className="font-sans text-[0.65rem] font-bold text-[#E60000] uppercase tracking-widest">{project.category}</span>
                   <span className="w-4 h-[1px] bg-white/20" />
                   <span className="font-sans text-[0.65rem] text-white/50 uppercase tracking-widest">{project.location}</span>
                 </div>

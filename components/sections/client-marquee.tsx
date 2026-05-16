@@ -43,7 +43,7 @@ export function ClientMarquee() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl">
-            <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E000D0] uppercase mb-4">
+            <p className="font-sans text-[0.65rem] font-bold tracking-[0.25em] text-[#E60000] uppercase mb-4">
               Our Network
             </p>
             <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-light text-white leading-[1.1] tracking-tight">
@@ -51,7 +51,7 @@ export function ClientMarquee() {
             </h2>
           </div>
           <div className="md:pb-2">
-            <a href="#contact" className="inline-flex items-center gap-2 font-sans text-xs font-bold tracking-widest text-white hover:text-[#E000D0] transition-colors uppercase">
+            <a href="#contact" className="inline-flex items-center gap-2 font-sans text-xs font-bold tracking-widest text-white hover:text-[#E60000] transition-colors uppercase">
               Join our network <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

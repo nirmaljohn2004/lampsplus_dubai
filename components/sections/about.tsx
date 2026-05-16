@@ -27,14 +27,14 @@ export function AboutSection() {
           
           {/* Left: Sticky Typography Headings */}
           <div className="lg:w-[45%] lg:sticky lg:top-40 flex flex-col">
-            <p className="font-sans text-[0.7rem] font-bold tracking-[0.25em] text-[#E000D0] uppercase mb-8">
+            <p className="font-sans text-[0.7rem] font-bold tracking-[0.25em] text-[#E60000] uppercase mb-8">
               Who We Are
             </p>
             <h2 className="font-serif text-[clamp(3rem,5vw,5rem)] font-light leading-[1.05] text-white tracking-tight">
               Dubai's Legacy of <span className="font-medium italic">Excellence.</span>
             </h2>
             <div className="mt-12 flex flex-col gap-2 bg-[#111111] border border-white/5 rounded-[16px] px-8 py-6 w-fit">
-              <span className="font-sans text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#E000D0]">
+              <span className="font-sans text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#E60000]">
                 Head Office
               </span>
               <span className="font-sans text-[1rem] font-medium text-white tracking-wide">
@@ -79,8 +79,8 @@ export function AboutSection() {
             <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 gap-8 pt-12 border-t border-white/10">
               {achievements.map((item) => (
                 <div key={item.title} className="flex gap-5 items-start group">
-                  <div className="p-3 rounded-full bg-white/5 border border-white/5 transition-colors group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 mt-1">
-                    <item.icon className="w-5 h-5 text-white/50 group-hover:text-[#E000D0] transition-colors" />
+                  <div className="p-3 rounded-full bg-white/5 border border-white/5 transition-colors group-hover:bg-[#E60000]/10 group-hover:border-[#E60000]/30 mt-1">
+                    <item.icon className="w-5 h-5 text-white/50 group-hover:text-[#E60000] transition-colors" />
                   </div>
                   <div>
                     <h3 className="font-sans text-[1.05rem] font-medium text-white mb-1">
@@ -97,7 +97,7 @@ export function AboutSection() {
             <div className="mt-16">
               <a 
                 href="#contact" 
-                className="inline-flex items-center gap-3 font-sans text-[0.8rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E000D0] transition-colors"
+                className="inline-flex items-center gap-3 font-sans text-[0.8rem] font-bold tracking-[0.2em] uppercase text-white hover:text-[#E60000] transition-colors"
               >
                 <span className="w-8 h-[1px] bg-current" />
                 Discuss Your Project

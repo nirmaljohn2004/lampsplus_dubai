@@ -50,7 +50,7 @@ const sourceOptions = [
 ]
 
 const inputClass =
-  "w-full px-4 py-3.5 bg-[#0a0a0a] border border-white/10 rounded-[12px] font-sans text-[0.9rem] text-white placeholder-white/25 focus:border-[#E000D0]/60 focus:outline-none focus:ring-1 focus:ring-[#E000D0]/30 transition-all duration-200"
+  "w-full px-4 py-3.5 bg-[#0a0a0a] border border-white/10 rounded-[12px] font-sans text-[0.9rem] text-white placeholder-white/25 focus:border-[#E60000]/60 focus:outline-none focus:ring-1 focus:ring-[#E60000]/30 transition-all duration-200"
 
 const labelClass =
   "block font-sans text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-white/40 mb-2"
@@ -121,8 +121,8 @@ export function ContactSection() {
       aria-label="Contact Lamps plus Dubai — Get a Free Quote"
     >
       {/* Background glow */}
-      <div className="absolute bottom-0 right-[-5%] w-[600px] h-[600px] bg-[#E000D0] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-[#E000D0] opacity-[0.02] blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-[-5%] w-[600px] h-[600px] bg-[#E60000] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-[#E60000] opacity-[0.02] blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-[var(--container-max)] mx-auto px-[var(--section-pad-x)] relative z-10">
 
@@ -134,8 +134,8 @@ export function ContactSection() {
           className="mb-16 lg:mb-20 max-w-3xl"
         >
           <div className="inline-flex items-center gap-3 mb-6">
-            <span className="w-12 h-[2px] bg-[#E000D0]" />
-            <p className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-[#E000D0] uppercase">
+            <span className="w-12 h-[2px] bg-[#E60000]" />
+            <p className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-[#E60000] uppercase">
               Get In Touch
             </p>
           </div>
@@ -183,8 +183,8 @@ export function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 transition-all">
-                    <MapPin className="w-4 h-4 text-white/40 group-hover:text-[#E000D0] transition-colors" />
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E60000]/10 group-hover:border-[#E60000]/30 transition-all">
+                    <MapPin className="w-4 h-4 text-white/40 group-hover:text-[#E60000] transition-colors" />
                   </div>
                   <address className="font-sans text-[0.9rem] text-white/60 not-italic leading-relaxed group-hover:text-white/90 transition-colors">
                     Alquoz industrial area 3,<br />
@@ -193,8 +193,8 @@ export function ContactSection() {
                 </a>
 
                 <a href="tel:+917356780866" className="flex items-center gap-4 group">
-                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 transition-all">
-                    <Phone className="w-4 h-4 text-white/40 group-hover:text-[#E000D0] transition-colors" />
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E60000]/10 group-hover:border-[#E60000]/30 transition-all">
+                    <Phone className="w-4 h-4 text-white/40 group-hover:text-[#E60000] transition-colors" />
                   </div>
                   <span className="font-sans text-[0.9rem] text-white/60 group-hover:text-white/90 transition-colors">
                     +91 73567 80866
@@ -218,8 +218,8 @@ export function ContactSection() {
                 </a>
 
                 <a href="mailto:sales@az-tech.ae" className="flex items-center gap-4 group">
-                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E000D0]/10 group-hover:border-[#E000D0]/30 transition-all">
-                    <Mail className="w-4 h-4 text-white/40 group-hover:text-[#E000D0] transition-colors" />
+                  <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E60000]/10 group-hover:border-[#E60000]/30 transition-all">
+                    <Mail className="w-4 h-4 text-white/40 group-hover:text-[#E60000] transition-colors" />
                   </div>
                   <span className="font-sans text-[0.9rem] text-white/60 group-hover:text-white/90 transition-colors">
                     sales@az-tech.ae
@@ -280,8 +280,8 @@ export function ContactSection() {
           >
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-20 text-center gap-6">
-                <div className="w-16 h-16 rounded-full bg-[#E000D0]/10 border border-[#E000D0]/20 flex items-center justify-center">
-                  <CheckCircle className="w-8 h-8 text-[#E000D0]" />
+                <div className="w-16 h-16 rounded-full bg-[#E60000]/10 border border-[#E60000]/20 flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-[#E60000]" />
                 </div>
                 <div>
                   <h3 className="font-serif text-[1.6rem] font-normal text-white mb-3">Gmail Opened!</h3>
@@ -291,7 +291,7 @@ export function ContactSection() {
                 </div>
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-2 font-sans text-[0.85rem] font-bold tracking-[0.15em] uppercase text-white/50 hover:text-[#E000D0] transition-colors"
+                  className="inline-flex items-center gap-2 font-sans text-[0.85rem] font-bold tracking-[0.15em] uppercase text-white/50 hover:text-[#E60000] transition-colors"
                 >
                   <span className="w-6 h-[1px] bg-current" />
                   Explore our projects
@@ -300,8 +300,8 @@ export function ContactSection() {
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col flex-1">
                 <div className="flex items-center gap-3 mb-10">
-                  <div className="w-9 h-9 rounded-full bg-[#E000D0]/10 border border-[#E000D0]/20 flex items-center justify-center shrink-0">
-                    <MessageSquare className="w-4 h-4 text-[#E000D0]" />
+                  <div className="w-9 h-9 rounded-full bg-[#E60000]/10 border border-[#E60000]/20 flex items-center justify-center shrink-0">
+                    <MessageSquare className="w-4 h-4 text-[#E60000]" />
                   </div>
                   <h3 className="font-serif text-[1.4rem] font-normal text-white">
                     Send Us a Project Enquiry
@@ -313,7 +313,7 @@ export function ContactSection() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className={labelClass}>
-                        Full Name <span className="text-[#E000D0]">*</span>
+                        Full Name <span className="text-[#E60000]">*</span>
                       </label>
                       <input type="text" id="name" name="name" required className={inputClass} />
                     </div>
@@ -327,13 +327,13 @@ export function ContactSection() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="email" className={labelClass}>
-                        Email Address <span className="text-[#E000D0]">*</span>
+                        Email Address <span className="text-[#E60000]">*</span>
                       </label>
                       <input type="email" id="email" name="email" required className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="phone" className={labelClass}>
-                        Phone / WhatsApp <span className="text-[#E000D0]">*</span>
+                        Phone / WhatsApp <span className="text-[#E60000]">*</span>
                       </label>
                       <input type="tel" id="phone" name="phone" required placeholder="+971 XXXXX XXXXX" className={inputClass} />
                     </div>
@@ -343,7 +343,7 @@ export function ContactSection() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="service" className={labelClass}>
-                        Service Required <span className="text-[#E000D0]">*</span>
+                        Service Required <span className="text-[#E60000]">*</span>
                       </label>
                       <select id="service" name="service" required className={inputClass}>
                         {serviceOptions.map((o) => (
@@ -405,7 +405,7 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 bg-[#E000D0] text-white font-sans text-[0.9rem] font-semibold tracking-[0.04em] rounded-[14px] hover:bg-[#C000B0] hover:-translate-y-[1px] transition-all duration-200 shadow-[0_0_30px_rgba(224,0,208,0.3)] hover:shadow-[0_0_40px_rgba(224,0,208,0.5)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+                    className="w-full py-4 bg-[#E60000] text-white font-sans text-[0.9rem] font-semibold tracking-[0.04em] rounded-[14px] hover:bg-[#CC0000] hover:-translate-y-[1px] transition-all duration-200 shadow-[0_0_30px_rgba(230,0,0,0.3)] hover:shadow-[0_0_40px_rgba(230,0,0,0.5)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
                   >
                     {isSubmitting ? "Sending…" : "Send My Enquiry"}
                   </button>
