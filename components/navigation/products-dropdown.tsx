@@ -2,45 +2,41 @@ import { ArrowRight } from "lucide-react"
 
 const productCategories = [
   {
-    title: "Indoor",
+    title: "Control & LCD",
     products: [
-      { name: "HD LED Display", href: "#products" },
-      { name: "Indoor LED Display", href: "#products" },
-      { name: "Front Service LED Display", href: "#products" },
-      { name: "Die-Cast LED Display", href: "#products" },
-      { name: "LCD Video Wall", href: "#products" },
-      { name: "Interactive LCD Display", href: "#products" },
+      { name: "Matrix Controllers", href: "#products" },
+      { name: "Keyboards", href: "#products" },
+      { name: "Decoders", href: "#products" },
+      { name: "LCD Video Walls", href: "#products" },
+      { name: "LCD Digital Signage", href: "#products" },
     ],
   },
   {
-    title: "Outdoor",
+    title: "LED Indoor",
     products: [
-      { name: "Outdoor DIP LED Display", href: "#products" },
-      { name: "Outdoor SMD LED Display", href: "#products" },
-      { name: "Perimeter LED Display", href: "#products" },
-      { name: "Curve LED Display", href: "#products" },
-      { name: "Large Format Outdoor", href: "#products" },
+      { name: "Indoor Fine Pixel", href: "#products" },
+      { name: "Indoor Fixed", href: "#products" },
+      { name: "Indoor Rental", href: "#products" },
+      { name: "Conference All-In-One", href: "#products" },
+      { name: "Commercial LED", href: "#products" },
     ],
   },
   {
-    title: "Specialty",
+    title: "LED Outdoor & Modules",
     products: [
-      { name: "Transparent Glass LED", href: "#products" },
-      { name: "Curtain / Mesh LED Display", href: "#products" },
-      { name: "Floor LED Display", href: "#products" },
-      { name: "Poster LED Display", href: "#products" },
-      { name: "Spherical LED Display", href: "#products" },
-      { name: "Creative / Custom Shape LED", href: "#products" },
+      { name: "Outdoor Fixed", href: "#products" },
+      { name: "Outdoor Rental", href: "#products" },
+      { name: "Stadium LED", href: "#products" },
+      { name: "Rental LED Display", href: "#products" },
+      { name: "LED Modules", href: "#products" },
     ],
   },
   {
-    title: "Niche",
+    title: "Intelligent Energy",
     products: [
-      { name: "Gas Price LED Display", href: "#products" },
-      { name: "Taxi Rooftop LED Display", href: "#products" },
-      { name: "Traffic LED Display", href: "#products" },
-      { name: "Time / Temperature Display", href: "#products" },
-      { name: "Rental & Portable LED", href: "#products" },
+      { name: "Smart Power Saving", href: "#products" },
+      { name: "Smart Lighting Pole", href: "#products" },
+      { name: "Educational Illumination", href: "#products" },
     ],
   },
 ]
@@ -82,6 +78,36 @@ export function ProductsDropdown() {
           >
             Talk to an Expert
             <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        {/* Featured products */}
+        <div className="mt-8 grid grid-cols-2 gap-8">
+          <a href="#products" className="group flex flex-col gap-3">
+            <div className="relative aspect-[21/9] bg-[#1A1A1A] rounded-[var(--radius-md)] overflow-hidden">
+              <img 
+                src="/images/matrix_1.png" 
+                alt="DSCON2100-0410H" 
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
+              />
+            </div>
+            <div>
+              <h4 className="font-sans text-[1rem] font-semibold text-[var(--text-heading)]">DSCON2100-0410H</h4>
+              <p className="font-sans text-[0.75rem] text-[var(--accent)] uppercase tracking-wider mt-1">LAMPS PLUS 1.5U EMBEDDED MULTI-SCREEN CONTROLLER</p>
+            </div>
+          </a>
+          <a href="#products" className="group flex flex-col gap-3">
+            <div className="relative aspect-[21/9] bg-[#1A1A1A] rounded-[var(--radius-md)] overflow-hidden">
+              <img 
+                src="/images/matrix_3.png" 
+                alt="DSCON3000-7U" 
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
+              />
+            </div>
+            <div>
+              <h4 className="font-sans text-[1rem] font-semibold text-[var(--text-heading)]">DSCON3000-7U</h4>
+              <p className="font-sans text-[0.75rem] text-[var(--accent)] uppercase tracking-wider mt-1">MULTI-SCREEN CONTROLLER</p>
+            </div>
           </a>
         </div>
       </div>
