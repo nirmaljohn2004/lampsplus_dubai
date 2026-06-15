@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/sections/hero"
 import { ClientMarquee } from "@/components/sections/client-marquee"
+import { TrustedBrands } from "@/components/sections/trusted-brands"
 import { AboutSection } from "@/components/sections/about"
 import { ServicesSection } from "@/components/sections/services"
 import { ProductsSection } from "@/components/sections/products"
@@ -15,7 +16,8 @@ export default function Home() {
     <main id="main" role="main" className="min-h-screen bg-[var(--bg-primary)]">
       <Navigation />
       <HeroSection />
-      <ClientMarquee />
+      {/* <ClientMarquee /> */}
+      <TrustedBrands />
       <AboutSection />
       <ServicesSection />
       <ProductsSection />
