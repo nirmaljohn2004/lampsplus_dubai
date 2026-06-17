@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/sections/hero"
 import { ClientMarquee } from "@/components/sections/client-marquee"
@@ -20,7 +21,9 @@ export default function Home() {
       <TrustedBrands />
       <AboutSection />
       <ServicesSection />
-      <ProductsSection />
+      <Suspense fallback={<div className="min-h-[100svh] bg-[#050505]" />}>
+        <ProductsSection />
+      </Suspense>
       <SolutionsSection />
       <PortfolioSection />
       <BlogSection />
