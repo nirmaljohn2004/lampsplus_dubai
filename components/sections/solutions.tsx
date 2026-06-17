@@ -5,7 +5,7 @@ import Image from "next/image"
 import { 
   ShoppingBag, Building2, Hotel, Heart, 
   GraduationCap, Landmark, PartyPopper, Trophy,
-  ArrowRight
+  ArrowRight, Presentation, Monitor
 } from "lucide-react"
 
 const industries = [
@@ -80,6 +80,24 @@ const industries = [
     description: "Stadium installations requiring maximum brightness and structural integrity.",
     image: "/images/portfolio_stadium_1774782441665.webp",
     gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: "conference",
+    icon: Presentation,
+    name: "Conference Room",
+    projects: 5,
+    description: "Redefine the meeting scene with diverse display solutions and efficient interaction tools, improving office experience and work efficiency.",
+    image: "/images/portfolio-corporate.jpg",
+    gridClass: "md:col-span-2 md:row-span-1",
+  },
+  {
+    id: "monitoring",
+    icon: Monitor,
+    name: "Monitoring Center",
+    projects: 3,
+    description: "Integrates display, control, scheduling, and modular room systems for a new generation of reliable monitoring center solutions.",
+    image: "/images/portfolio_gov_1774782461132.webp",
+    gridClass: "md:col-span-2 md:row-span-1",
   },
 ]
 

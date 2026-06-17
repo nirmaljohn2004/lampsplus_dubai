@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { Monitor, Sun, Layers, Car, ArrowRight } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 
 const categories = [
   {
@@ -15,48 +16,48 @@ const categories = [
         id: "matrix",
         name: "Matrix",
         products: [
-          { name: "DSCON2100-0416H", subtitle: "Lamps Plus 1.5U EMBEDDED MULTI-SCREEN CONTROLLER", image: "/images/matrix_3.png" },
-          { name: "DSCON2100-0412H", subtitle: "Lamps Plus 1.5U EMBEDDED MULTI-SCREEN CONTROLLER", image: "/images/matrix_3.png" },
-          { name: "DSCON2100-0410H", subtitle: "Lamps Plus 1.5U EMBEDDED MULTI-SCREEN CONTROLLER", image: "/images/matrix_3.png" },
-          { name: "DSCON3000-7U", subtitle: "Multi-screen Controller", image: "/images/matrix_2.png" },
-          { name: "DSCON3000-4U", subtitle: "Multi-screen Controller", image: "/images/matrix_2.png" },
-          { name: "M70-D-0205HO(-H)", subtitle: "2 Channel HDMI Distributed Decoding Box", image: "/images/matrix_1.png" },
-          { name: "DSCON3000-M", subtitle: "Multi-screen Controller", image: "/images/matrix_3.png" },
-          { name: "M60-7U", subtitle: "Multi-service Video Management Platform", image: "/images/matrix_2.png" },
-          { name: "M70-4U-E", subtitle: "Multi-service Video Management Platform", image: "/images/matrix_2.png" },
-          { name: "M60-12U", subtitle: "Multi-service Video Management Platform", image: "/images/matrix_2.png" },
+          { name: "LP-CON2100-0416H", subtitle: "Lamps Plus 1.5U EMBEDDED MULTI-SCREEN CONTROLLER", image: "/images/matrix_3.png" },
+          { name: "LP-CON2100-0412H", subtitle: "Lamps Plus 1.5U EMBEDDED MULTI-SCREEN CONTROLLER", image: "/images/matrix_3.png" },
+          { name: "LP-CON2100-0410H", subtitle: "Lamps Plus 1.5U EMBEDDED MULTI-SCREEN CONTROLLER", image: "/images/matrix_3.png" },
+          { name: "LP-CON3000-7U", subtitle: "Multi-screen Controller", image: "/images/matrix_2.png" },
+          { name: "LP-CON3000-4U", subtitle: "Multi-screen Controller", image: "/images/matrix_2.png" },
+          { name: "LP-M70-D-0205HO(-H)", subtitle: "2 Channel HDMI Distributed Decoding Box", image: "/images/matrix_1.png" },
+          { name: "LP-CON3000-M", subtitle: "Multi-screen Controller", image: "/images/matrix_3.png" },
+          { name: "LP-M60-7U", subtitle: "Multi-service Video Management Platform", image: "/images/matrix_2.png" },
+          { name: "LP-M70-4U-E", subtitle: "Multi-service Video Management Platform", image: "/images/matrix_2.png" },
+          { name: "LP-M60-12U", subtitle: "Multi-service Video Management Platform", image: "/images/matrix_2.png" },
         ]
       },
       {
         id: "keyboards",
         name: "Keyboards",
         products: [
-          { name: "NKB5200(-F)", subtitle: "Android Network Control Keyboard", image: "/images/keyboard_1.png" },
-          { name: "NKB1000-E", subtitle: "Network Keyboard", image: "/images/keyboard_2.png" },
-          { name: "NKB1000", subtitle: "Network Keyboard", image: "/images/keyboard_2.png" },
+          { name: "LP-KB5200(-F)", subtitle: "Android Network Control Keyboard", image: "/images/keyboard_1.png" },
+          { name: "LP-KB1000-E", subtitle: "Network Keyboard", image: "/images/keyboard_2.png" },
+          { name: "LP-KB1000", subtitle: "Network Keyboard", image: "/images/keyboard_2.png" },
         ]
       },
       {
         id: "decoders",
         name: "Decoders",
         products: [
-          { name: "NVD0200FX-A01", subtitle: "Lamps Plus 2CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
-          { name: "NVD1605DU-4I-8K-2U2H", subtitle: "Lamps Plus 16CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
-          { name: "NVD2005DU-4I-8K-4H", subtitle: "Lamps Plus 20CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
-          { name: "NVD1205DU-4I-8K", subtitle: "Lamps Plus 12CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
-          { name: "NVD0405DU-2I-8K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
-          { name: "NVD0105DH-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
-          { name: "NVD2105DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
-          { name: "NVD1805DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
-          { name: "NVD1505DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
-          { name: "NVD1205DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
+          { name: "LP-VD0200FX-A01", subtitle: "Lamps Plus 2CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
+          { name: "LP-VD1605DU-4I-8K-2U2H", subtitle: "Lamps Plus 16CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
+          { name: "LP-VD2005DU-4I-8K-4H", subtitle: "Lamps Plus 20CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
+          { name: "LP-VD1205DU-4I-8K", subtitle: "Lamps Plus 12CH UHD NETWORK VIDEO DECODER", image: "/images/decoder_1.png" },
+          { name: "LP-VD0405DU-2I-8K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
+          { name: "LP-VD0105DH-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
+          { name: "LP-VD2105DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
+          { name: "LP-VD1805DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
+          { name: "LP-VD1505DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
+          { name: "LP-VD1205DH-4I-4K", subtitle: "Ultra-HD Network Video Decoder", image: "/images/decoder_1.png" },
         ]
       },
       {
         id: "encoder",
         name: "Encoder",
         products: [
-          { name: "NEB0105HI-4K", subtitle: "1 Channel Distributed Encoding Box", image: "/images/encoder_1.png" },
+          { name: "LP-EB0105HI-4K", subtitle: "1 Channel Distributed Encoding Box", image: "/images/encoder_1.png" },
         ]
       }
     ]
@@ -70,10 +71,10 @@ const categories = [
         id: "essential",
         name: "Essential Series",
         products: [
-          { name: "LS490UCM-EF", subtitle: "49\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_1.png" },
-          { name: "LS550UEM-EF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 0.88mm)", image: "/images/lcd_video_wall_1.png" },
-          { name: "LS550UEH-EF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 0.88mm)", image: "/images/lcd_video_wall_1.png" },
-          { name: "LS550UCM-EF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_1.png" },
+          { name: "LP-LS490UCM-EF", subtitle: "49\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_1.png" },
+          { name: "LP-LS550UEM-EF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 0.88mm)", image: "/images/lcd_video_wall_1.png" },
+          { name: "LP-LS550UEH-EF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 0.88mm)", image: "/images/lcd_video_wall_1.png" },
+          { name: "LP-LS550UCM-EF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_1.png" },
         ]
       },
       {
@@ -85,16 +86,16 @@ const categories = [
         id: "ultra",
         name: "Ultra Series",
         products: [
-          { name: "LS650KCM-UF", subtitle: "Lamps Plus 65 inch 3.5mm LCD Display Wall Unit (LCD DISPLAY)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550UEM-UF", subtitle: "Lamps Plus 55 inch 0.88mm LCD Display Wall Unit (LCD DISPLAY)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550UEH-UF", subtitle: "Lamps Plus 55 inch 0.88mm LCD Display Wall Unit (LCD DISPLAY)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550KDM-UF", subtitle: "55\" UHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550KDH-UF", subtitle: "55\" UHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS460UDM-UF", subtitle: "46\" FHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550UDM-UF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550UEH-UG", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 0.88mm)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS550UCM-UF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_2.png" },
-          { name: "LS490UCM-UF", subtitle: "49\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS650KCM-UF", subtitle: "Lamps Plus 65 inch 3.5mm LCD Display Wall Unit (LCD DISPLAY)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550UEM-UF", subtitle: "Lamps Plus 55 inch 0.88mm LCD Display Wall Unit (LCD DISPLAY)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550UEH-UF", subtitle: "Lamps Plus 55 inch 0.88mm LCD Display Wall Unit (LCD DISPLAY)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550KDM-UF", subtitle: "55\" UHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550KDH-UF", subtitle: "55\" UHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS460UDM-UF", subtitle: "46\" FHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550UDM-UF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 1.7mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550UEH-UG", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 0.88mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS550UCM-UF", subtitle: "55\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_2.png" },
+          { name: "LP-LS490UCM-UF", subtitle: "49\" FHD Video Wall Display Unit (Ultra Narrow Bezel 3.5mm)", image: "/images/lcd_video_wall_2.png" },
         ]
       }
     ]
@@ -108,72 +109,72 @@ const categories = [
         id: "lite",
         name: "Lite Series",
         products: [
-          { name: "LDH65-LAI400L", subtitle: "Lamps Plus 65 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH55-LAI400L", subtitle: "Lamps Plus 55 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH50-LAI400L", subtitle: "Lamps Plus 50 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH43-LAI400L", subtitle: "Lamps Plus 43 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH65-LAI400L", subtitle: "Lamps Plus 65 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH55-LAI400L", subtitle: "Lamps Plus 55 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH50-LAI400L", subtitle: "Lamps Plus 50 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH43-LAI400L", subtitle: "Lamps Plus 43 inch LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
         ]
       },
       {
         id: "standard",
         name: "Standard Series",
         products: [
-          { name: "LDH55-SAI400TL", subtitle: "Lamps Plus 55 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH43-SAI400TL", subtitle: "Lamps Plus 43 Inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH55-SAI400L", subtitle: "Lamps Plus 55 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH65-SAI400L", subtitle: "Lamps Plus 65 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH43-SAI400L", subtitle: "Lamps Plus 43 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "DHI-LDH43-SWI200", subtitle: "43\" Wall-mounted Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH32-SAI200L", subtitle: "Lamps Plus 32 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH22-SAI200L", subtitle: "Lamps Plus 21.5 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDV65-SAI400TL", subtitle: "Lamps Plus 65 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV55-SAI400TL", subtitle: "Lamps Plus 55 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV43-SAI400TL", subtitle: "Lamps Plus 43 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV75-SAI400L", subtitle: "Lamps Plus 75 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV65-SAI400L", subtitle: "Lamps Plus 65 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV55-SAI400L", subtitle: "Lamps Plus 55 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV43-SAI400L", subtitle: "Lamps Plus 43 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
-          { name: "LDV43-SAI400K", subtitle: "Lamps Plus 43 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DH55-SAI400TL", subtitle: "Lamps Plus 55 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH43-SAI400TL", subtitle: "Lamps Plus 43 Inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH55-SAI400L", subtitle: "Lamps Plus 55 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH65-SAI400L", subtitle: "Lamps Plus 65 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH43-SAI400L", subtitle: "Lamps Plus 43 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH43-SWI200", subtitle: "43\" Wall-mounted Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH32-SAI200L", subtitle: "Lamps Plus 32 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH22-SAI200L", subtitle: "Lamps Plus 21.5 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DV65-SAI400TL", subtitle: "Lamps Plus 65 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV55-SAI400TL", subtitle: "Lamps Plus 55 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV43-SAI400TL", subtitle: "Lamps Plus 43 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV75-SAI400L", subtitle: "Lamps Plus 75 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV65-SAI400L", subtitle: "Lamps Plus 65 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV55-SAI400L", subtitle: "Lamps Plus 55 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV43-SAI400L", subtitle: "Lamps Plus 43 inch Indoor Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
+          { name: "LP-DV43-SAI400K", subtitle: "Lamps Plus 43 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_vertical.png" },
         ]
       },
       {
         id: "pro",
         name: "Pro Series",
         products: [
-          { name: "LDH65-WAI200L", subtitle: "Lamps Plus 65 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
-          { name: "LDH55-WAI200L", subtitle: "Lamps Plus 55 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
-          { name: "LDH43-WAI200L", subtitle: "Lamps Plus 43 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
-          { name: "LDH32-WAI200L", subtitle: "Lamps Plus 32 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
-          { name: "LDH65-HAI400L", subtitle: "Lamps Plus 65 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH55-HAI400L", subtitle: "Lamps Plus 55 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
-          { name: "LDH43-HAI400L", subtitle: "Lamps Plus 43 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH65-WAI200L", subtitle: "Lamps Plus 65 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
+          { name: "LP-DH55-WAI200L", subtitle: "Lamps Plus 55 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
+          { name: "LP-DH43-WAI200L", subtitle: "Lamps Plus 43 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
+          { name: "LP-DH32-WAI200L", subtitle: "Lamps Plus 32 Inch LCD Digital Signage", image: "/images/lcd_digital_signage_hanging.png" },
+          { name: "LP-DH65-HAI400L", subtitle: "Lamps Plus 65 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH55-HAI400L", subtitle: "Lamps Plus 55 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
+          { name: "LP-DH43-HAI400L", subtitle: "Lamps Plus 43 inch Indoor Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_1.png" },
         ]
       },
       {
         id: "outdoor",
         name: "Outdoor Series",
         products: [
-          { name: "LDH65-EAO400L", subtitle: "Lamps Plus 65 inch Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_wall.png" },
-          { name: "LDH55-EAO400L", subtitle: "Lamps Plus 55 inch Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_wall.png" },
-          { name: "LDH43-EAO400L", subtitle: "Lamps Plus 43 inch Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_wall.png" },
-          { name: "LDV65-EAO400L", subtitle: "Lamps Plus 65 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_vertical.png" },
-          { name: "LDV55-EAO400L", subtitle: "Lamps Plus 55 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_vertical.png" },
-          { name: "LDV43-EAO400L", subtitle: "Lamps Plus 43 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_vertical.png" },
+          { name: "LP-DH65-EAO400L", subtitle: "Lamps Plus 65 inch Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_wall.png" },
+          { name: "LP-DH55-EAO400L", subtitle: "Lamps Plus 55 inch Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_wall.png" },
+          { name: "LP-DH43-EAO400L", subtitle: "Lamps Plus 43 inch Wall-mounted LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_wall.png" },
+          { name: "LP-DV65-EAO400L", subtitle: "Lamps Plus 65 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_vertical.png" },
+          { name: "LP-DV55-EAO400L", subtitle: "Lamps Plus 55 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_vertical.png" },
+          { name: "LP-DV43-EAO400L", subtitle: "Lamps Plus 43 inch Vertical LCD Digital Signage", image: "/images/lcd_digital_signage_outdoor_vertical.png" },
         ]
       },
       {
         id: "media-player",
         name: "Media Player",
         products: [
-          { name: "DS04-AI400", subtitle: "Lamps Plus Media Player Box", image: "/images/lcd_digital_signage_media_player.png" },
+          { name: "LP-DS04-AI400", subtitle: "Lamps Plus Media Player Box", image: "/images/lcd_digital_signage_media_player.png" },
         ]
       },
       {
         id: "others",
         name: "Others",
         products: [
-          { name: "LD-AI-W", subtitle: "USB Wi-Fi dongle", image: "/images/lcd_digital_signage_others_wifi.png" },
-          { name: "PVM10-SAI100", subtitle: "Lamps Plus 10.1\" Wall-mounted Digital Signage", image: "/images/lcd_digital_signage_others_10inch.png" },
+          { name: "LP-AI-W", subtitle: "USB Wi-Fi dongle", image: "/images/lcd_digital_signage_others_wifi.png" },
+          { name: "LP-VM10-SAI100", subtitle: "Lamps Plus 10.1\" Wall-mounted Digital Signage", image: "/images/lcd_digital_signage_others_10inch.png" },
         ]
       }
     ]
@@ -187,157 +188,135 @@ const categories = [
         id: "indoor-fine-pixel",
         name: "Indoor Fine Pixel",
         products: [
-          { name: "DHI-PHSIA1.2-CK", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.2", image: "/images/prod_12.webp" },
-          { name: "PHSIA4-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P4", image: "/images/prod_12.webp" },
-          { name: "PHSIA3-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P3", image: "/images/prod_12.webp" },
-          { name: "PHSIA2.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2.5", image: "/images/prod_12.webp" },
-          { name: "PHSIA2-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.8-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.8", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.5", image: "/images/prod_12.webp" },
-          { name: "PHGIA3.91-SE", subtitle: "Lamps Plus Indoor Front Maintenance fixed screen LED_P3.91", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.5-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.2-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA0.9-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.5-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.2-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA0.9-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.8-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.5-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.2-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA0.9-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.5-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
-          { name: "PHSIA1.2-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.2-CK", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.2", image: "/images/prod_12.webp" },
+          { name: "LP-SIA4-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P4", image: "/images/prod_12.webp" },
+          { name: "LP-SIA3-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P3", image: "/images/prod_12.webp" },
+          { name: "LP-SIA2.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2.5", image: "/images/prod_12.webp" },
+          { name: "LP-SIA2-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.8-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.8", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.5", image: "/images/prod_12.webp" },
+          { name: "LP-GIA3.91-SE", subtitle: "Lamps Plus Indoor Front Maintenance fixed screen LED_P3.91", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.5-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.2-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA0.9-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.5-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.2-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA0.9-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.8-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.5-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.2-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA0.9-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.5-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
+          { name: "LP-SIA1.2-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "indoor-fixed",
         name: "Indoor Fixed",
         products: [
-          { name: "PHGIA4.81-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGIA3.91-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGIA2.97-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGIA2.61-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGIA1.95-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GIA4.81-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GIA3.91-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GIA2.97-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GIA2.61-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GIA1.95-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "outdoor-fixed",
         name: "Outdoor Fixed",
         products: [
-          { name: "DHI-PHGOA10-PH", subtitle: "Lamps Plus outdoor 960x960 front and rear maintenance fixed screen", image: "/images/prod_12.webp" },
-          { name: "PHGOA10-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGOA8-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGOA6-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGOA5-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGOA4.81-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGOA3.91-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
-          { name: "PHGOA2.97-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA10-PH", subtitle: "Lamps Plus outdoor 960x960 front and rear maintenance fixed screen", image: "/images/prod_12.webp" },
+          { name: "LP-GOA10-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA8-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA6-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA5-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA4.81-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA3.91-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
+          { name: "LP-GOA2.97-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "indoor-rental",
         name: "Indoor Rental",
         products: [
-          { name: "PHRIA2.61-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA1.95-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA3.91-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.97-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.61-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA1.95-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA3.91-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.97-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "outdoor-rental",
         name: "Outdoor Rental",
         products: [
-          { name: "PHROA4.81-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHROA3.91-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-ROA4.81-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-ROA3.91-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "stadium",
         name: "Stadium",
         products: [
-          { name: "PHVOA10-EH", subtitle: "Lamps Plus Outdoor Stadium LED", image: "/images/prod_12.webp" },
+          { name: "LP-VOA10-EH", subtitle: "Lamps Plus Outdoor Stadium LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "commercial",
         name: "Commercial",
         products: [
-          { name: "PHMIA135-AC", subtitle: "Lamps Plus Commercial All-In-One LED", image: "/images/prod_12.webp" },
+          { name: "LP-MIA135-AC", subtitle: "Lamps Plus Commercial All-In-One LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "conference-all-in-one",
         name: "Conference All-In-One",
         products: [
-          { name: "PHMIA216-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
-          { name: "PHMIA163-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
-          { name: "PHMIA135-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
-          { name: "PHMIA108-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
+          { name: "LP-MIA216-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
+          { name: "LP-MIA163-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
+          { name: "LP-MIA135-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
+          { name: "LP-MIA108-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "led-module",
         name: "LED Module",
         products: [
-          { name: "IFS-EOA10S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EOA8S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EOA6S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EOA5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EOA4S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EOA3S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EOA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EIA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EIA2S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EIA1.8S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EIA1.2S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
-          { name: "IFS-EIA1.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA10S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA8S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA6S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA4S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA3S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EOA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EIA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EIA2S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EIA1.8S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EIA1.2S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
+          { name: "LP-EIA1.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/prod_12.webp" },
         ]
       },
       {
         id: "rental-led-display",
         name: "Rental LED Display",
         products: [
-          { name: "PHRIA1.95-RF", subtitle: "Lamps Plus Creative Flexible Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHROA3.91-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHROA2.97-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA3.91-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.97-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.61-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA1.95-RE-G-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA3.91-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.97-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.61-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA1.95-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHROA4.81-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHROA3.91-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA3.91-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.97-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA2.61-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
-          { name: "PHRIA1.95-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA1.95-RF", subtitle: "Lamps Plus Creative Flexible Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-ROA3.91-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-ROA2.97-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA3.91-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.97-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.61-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA1.95-RE-G-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA3.91-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.97-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.61-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA1.95-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-ROA4.81-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-ROA3.91-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA3.91-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.97-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA2.61-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
+          { name: "LP-RIA1.95-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/prod_12.webp" },
         ]
-      }
-    ]
-  },
-  {
-    id: "intelligent-energy",
-    name: "Intelligent Energy",
-    description: "Smart and efficient energy solutions for modern infrastructure.",
-    subcategories: [
-      {
-        id: "smart-power-saving",
-        name: "Smart Power Saving",
-        products: []
-      },
-      {
-        id: "smart-lighting-pole",
-        name: "Smart Lighting Pole",
-        products: []
-      },
-      {
-        id: "educational-illumination",
-        name: "Educational Illumination",
-        products: []
       }
     ]
   }
@@ -346,19 +325,34 @@ const categories = [
 export function ProductsSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-10% 0px" })
-  const [activeTab, setActiveTab] = useState(categories[0].id)
-  const [activeSubTab, setActiveSubTab] = useState(categories[0].subcategories[0].id)
+  const searchParams = useSearchParams()
+  const initialCategory = searchParams.get("category") || categories[0].id
+  const initialSubcategory = searchParams.get("subcategory") || categories[0].subcategories[0].id
+
+  const [activeTab, setActiveTab] = useState(initialCategory)
+  const [activeSubTab, setActiveSubTab] = useState(initialSubcategory)
   const [currentPage, setCurrentPage] = useState(1)
+
+  // Update tabs if URL search params change
+  useEffect(() => {
+    const category = searchParams.get("category")
+    const subcategory = searchParams.get("subcategory")
+    if (category && categories.some(c => c.id === category)) {
+      setActiveTab(category)
+      const targetCat = categories.find(c => c.id === category)!
+      if (subcategory && targetCat.subcategories.some(s => s.id === subcategory)) {
+        setActiveSubTab(subcategory)
+      } else {
+        setActiveSubTab(targetCat.subcategories[0].id)
+      }
+      setCurrentPage(1)
+    }
+  }, [searchParams])
 
   const activeCategory = categories.find(c => c.id === activeTab) || categories[0]
   const activeSubcategory = activeCategory.subcategories.find(s => s.id === activeSubTab) || activeCategory.subcategories[0]
 
-  // When active category changes, reset active sub tab to its first subcategory and reset page
-  useEffect(() => {
-    const newActiveCategory = categories.find(c => c.id === activeTab) || categories[0]
-    setActiveSubTab(newActiveCategory.subcategories[0].id)
-    setCurrentPage(1)
-  }, [activeTab])
+
 
   const itemsPerPage = 6;
   const totalPages = Math.max(1, Math.ceil(activeSubcategory.products.length / itemsPerPage));
@@ -400,7 +394,11 @@ export function ProductsSection() {
               return (
                 <div key={category.id} className="border-t border-white/10 last:border-b">
                   <button
-                    onClick={() => setActiveTab(category.id)}
+                    onClick={() => {
+                      setActiveTab(category.id)
+                      setActiveSubTab(category.subcategories[0].id)
+                      setCurrentPage(1)
+                    }}
                     className="w-full text-left py-5 lg:py-6 group"
                   >
                     <div className="flex items-start gap-4 lg:gap-6">

@@ -9,6 +9,8 @@ const industries = [
   "Government & Public Sector",
   "Sports & Stadiums",
   "Events & Exhibitions",
+  "Conference Room",
+  "Monitoring Center",
 ]
 
 const services = [

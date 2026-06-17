@@ -10,8 +10,8 @@ import { SolutionsDropdown } from "./solutions-dropdown"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
-  { href: "/#products", label: "Products", hasDropdown: true, dropdownType: "products" },
-  { href: "/#solutions", label: "Solutions", hasDropdown: true, dropdownType: "solutions" },
+  { href: "#", label: "Products", hasDropdown: true, dropdownType: "products" },
+  { href: "#", label: "Solutions", hasDropdown: true, dropdownType: "solutions" },
   { href: "/#projects", label: "Projects" },
   { href: "/#blog", label: "Blog" },
   { href: "/#contact", label: "Contact" },
@@ -121,21 +121,25 @@ export function MainNav() {
           {/* Mega Dropdowns */}
           {activeDropdown === "products" && (
             <div 
-              className="hidden lg:block absolute left-0 right-0 top-[calc(100%+10px)] bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+              className="hidden lg:block absolute left-0 right-0 top-full pt-[10px]"
               onMouseEnter={() => handleDropdownEnter("products")}
               onMouseLeave={handleDropdownLeave}
             >
-              <ProductsDropdown />
+              <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+                <ProductsDropdown />
+              </div>
             </div>
           )}
           
           {activeDropdown === "solutions" && (
             <div 
-              className="hidden lg:block absolute left-0 right-0 top-[calc(100%+10px)] bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+              className="hidden lg:block absolute left-0 right-0 top-full pt-[10px]"
               onMouseEnter={() => handleDropdownEnter("solutions")}
               onMouseLeave={handleDropdownLeave}
             >
-              <SolutionsDropdown />
+              <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+                <SolutionsDropdown />
+              </div>
             </div>
           )}
         </nav>
