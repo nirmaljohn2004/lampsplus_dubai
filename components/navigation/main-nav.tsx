@@ -10,8 +10,8 @@ import { SolutionsDropdown } from "./solutions-dropdown"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
-  { href: "#", label: "Products", hasDropdown: true, dropdownType: "products" },
-  { href: "#", label: "Solutions", hasDropdown: true, dropdownType: "solutions" },
+  { href: "/#products", label: "Products", hasDropdown: true, dropdownType: "products" },
+  { href: "/#solutions", label: "Solutions", hasDropdown: true, dropdownType: "solutions" },
   { href: "/#projects", label: "Projects" },
   { href: "/#blog", label: "Blog" },
   { href: "/#contact", label: "Contact" },
@@ -35,6 +35,17 @@ export function MainNav() {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('nav')) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   const handleDropdownEnter = (type: string) => {
     setActiveDropdown(type)
@@ -75,20 +86,31 @@ export function MainNav() {
               {navLinks.map((link) => (
                 <div
                   key={link.label}
-                  className="relative"
-                  onMouseEnter={() => link.hasDropdown && handleDropdownEnter(link.dropdownType!)}
-                  onMouseLeave={handleDropdownLeave}
+                  className="relative flex items-center"
                 >
                   <a
                     href={link.href}
                     className="flex items-center gap-1 font-sans text-[0.9rem] font-semibold tracking-wide transition-colors duration-200 relative group py-2 text-white/90 hover:text-white"
                   >
                     {link.label}
-                    {link.hasDropdown && (
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.dropdownType ? "rotate-180" : ""}`} />
-                    )}
                     <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#E60000] transition-all duration-200 group-hover:w-full" />
                   </a>
+                  {link.hasDropdown && (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (activeDropdown === link.dropdownType) {
+                          setActiveDropdown(null);
+                        } else {
+                          setActiveDropdown(link.dropdownType!);
+                        }
+                      }}
+                      className="ml-1 p-1 hover:bg-white/10 rounded-full transition-colors"
+                      aria-label={`Toggle ${link.label} dropdown`}
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.dropdownType ? "rotate-180" : ""}`} />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
@@ -122,10 +144,15 @@ export function MainNav() {
           {activeDropdown === "products" && (
             <div 
               className="hidden lg:block absolute left-0 right-0 top-full pt-[10px]"
-              onMouseEnter={() => handleDropdownEnter("products")}
-              onMouseLeave={handleDropdownLeave}
             >
-              <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+              <div 
+                className="bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).tagName === 'A' || (e.target as HTMLElement).closest('a')) {
+                    setActiveDropdown(null);
+                  }
+                }}
+              >
                 <ProductsDropdown />
               </div>
             </div>
@@ -134,10 +161,15 @@ export function MainNav() {
           {activeDropdown === "solutions" && (
             <div 
               className="hidden lg:block absolute left-0 right-0 top-full pt-[10px]"
-              onMouseEnter={() => handleDropdownEnter("solutions")}
-              onMouseLeave={handleDropdownLeave}
             >
-              <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+              <div 
+                className="bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).tagName === 'A' || (e.target as HTMLElement).closest('a')) {
+                    setActiveDropdown(null);
+                  }
+                }}
+              >
                 <SolutionsDropdown />
               </div>
             </div>
