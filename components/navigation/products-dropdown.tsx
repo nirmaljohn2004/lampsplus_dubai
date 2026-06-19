@@ -7,6 +7,7 @@ const productCategories = [
       { name: "Matrix Controllers", href: "/?category=control&subcategory=matrix#products" },
       { name: "Keyboards", href: "/?category=control&subcategory=keyboards#products" },
       { name: "Decoders", href: "/?category=control&subcategory=decoders#products" },
+      { name: "LED Display Control", href: "/?category=control&subcategory=led-display-control#products" },
       { name: "LCD Video Walls", href: "/?category=lcd-video-walls&subcategory=essential#products" },
       { name: "LCD Digital Signage", href: "/?category=lcd-digital-signage&subcategory=lite#products" },
     ],
@@ -16,7 +17,6 @@ const productCategories = [
     products: [
       { name: "Indoor Fine Pixel", href: "/?category=led-displays&subcategory=indoor-fine-pixel#products" },
       { name: "Indoor Fixed", href: "/?category=led-displays&subcategory=indoor-fixed#products" },
-      { name: "Indoor Rental", href: "/?category=led-displays&subcategory=indoor-rental#products" },
       { name: "Conference All-In-One", href: "/?category=led-displays&subcategory=conference-all-in-one#products" },
       { name: "Commercial LED", href: "/?category=led-displays&subcategory=commercial#products" },
     ],
@@ -25,7 +25,6 @@ const productCategories = [
     title: "LED Outdoor & Modules",
     products: [
       { name: "Outdoor Fixed", href: "/?category=led-displays&subcategory=outdoor-fixed#products" },
-      { name: "Outdoor Rental", href: "/?category=led-displays&subcategory=outdoor-rental#products" },
       { name: "Stadium LED", href: "/?category=led-displays&subcategory=stadium#products" },
       { name: "Rental LED Display", href: "/?category=led-displays&subcategory=rental-led-display#products" },
       { name: "LED Modules", href: "/?category=led-displays&subcategory=led-module#products" },

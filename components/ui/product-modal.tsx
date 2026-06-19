@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { ProductDetail } from "@/lib/product-data";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface ProductModalProps {
   product: ProductDetail | null;
@@ -16,6 +16,8 @@ interface ProductModalProps {
 }
 
 export function ProductModal({ product, fallbackName, fallbackSubtitle, imageSrc, isOpen, onClose }: ProductModalProps) {
+  const [activeTab, setActiveTab] = useState<'specifications' | 'comparison'>('specifications');
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -100,26 +102,96 @@ export function ProductModal({ product, fallbackName, fallbackSubtitle, imageSrc
                   </div>
                 </div>
 
-                {/* Specifications */}
-                {product && product.specifications && product.specifications.length > 0 && (
-                  <div className="space-y-8 mt-12">
-                    <h3 className="text-2xl font-serif text-white border-b border-white/10 pb-4">Specifications</h3>
-                    
-                    <div className="space-y-8">
-                      {product.specifications.map((section, idx) => (
-                        <div key={idx}>
-                          <h4 className="text-lg font-medium text-[#E60000] mb-4 bg-[#E60000]/10 inline-block px-3 py-1 rounded">{section.category}</h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                            {section.specs.map((spec, specIdx) => (
-                              <div key={specIdx} className="border-b border-white/5 pb-3">
-                                <span className="block text-xs text-white/40 uppercase tracking-wider mb-1">{spec.label}</span>
-                                <span className="block text-sm text-white/90 leading-relaxed">{spec.value}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
+                {/* Tabs */}
+                {(product?.specifications || product?.comparisonTable) && (
+                  <div className="mt-12">
+                    <div className="flex items-center gap-8 border-b border-white/10 mb-8">
+                      {product?.specifications && product.specifications.length > 0 && (
+                        <button 
+                          onClick={() => setActiveTab('specifications')}
+                          className={`pb-4 text-xl font-serif transition-colors relative ${activeTab === 'specifications' ? 'text-white' : 'text-white/50 hover:text-white/80'}`}
+                        >
+                          Specifications
+                          {activeTab === 'specifications' && (
+                            <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E60000]" />
+                          )}
+                        </button>
+                      )}
+                      {product?.comparisonTable && (
+                        <button 
+                          onClick={() => setActiveTab('comparison')}
+                          className={`pb-4 text-xl font-serif transition-colors relative ${activeTab === 'comparison' ? 'text-white' : 'text-white/50 hover:text-white/80'}`}
+                        >
+                          Comparison
+                          {activeTab === 'comparison' && (
+                            <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E60000]" />
+                          )}
+                        </button>
+                      )}
                     </div>
+
+                    {/* Tab Content */}
+                    <AnimatePresence mode="wait">
+                      {activeTab === 'specifications' && product?.specifications && product.specifications.length > 0 && (
+                        <motion.div
+                          key="specifications"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="space-y-8"
+                        >
+                          {product.specifications.map((section, idx) => (
+                            <div key={idx}>
+                              <h4 className="text-lg font-medium text-[#E60000] mb-4 bg-[#E60000]/10 inline-block px-3 py-1 rounded">{section.category}</h4>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                                {section.specs.map((spec, specIdx) => (
+                                  <div key={specIdx} className="border-b border-white/5 pb-3">
+                                    <span className="block text-xs text-white/40 uppercase tracking-wider mb-1">{spec.label}</span>
+                                    <span className="block text-sm text-white/90 leading-relaxed">{spec.value}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
+
+                      {activeTab === 'comparison' && product?.comparisonTable && (
+                        <motion.div
+                          key="comparison"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-x-auto custom-scrollbar rounded-lg border border-white/10"
+                        >
+                          <table className="w-full text-left border-collapse text-xs md:text-sm">
+                            <thead>
+                              <tr className="border-b border-white/10 bg-[#1A1A1A]">
+                                {product.comparisonTable.headers.map((header, idx) => (
+                                  <th key={idx} className="py-2.5 px-3 font-medium text-[#E60000] align-middle">
+                                    {header}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-white/5 bg-[#111111]">
+                              {product.comparisonTable.rows.map((row, rowIdx) => (
+                                <tr key={rowIdx} className="hover:bg-white/[0.02] transition-colors">
+                                  <td className="py-2.5 px-3 text-white/80 font-medium whitespace-normal border-r border-white/5 min-w-[120px]">{row.label}</td>
+                                  {row.values.map((val, colIdx) => (
+                                    <td key={colIdx} className="py-2.5 px-3 text-white/60 whitespace-normal align-top leading-relaxed min-w-[100px]">
+                                      {val}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 )}
               </div>

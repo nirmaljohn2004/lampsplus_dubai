@@ -8,6 +8,10 @@ export interface ProductDetail {
     category: string;
     specs: { label: string; value: string }[];
   }[];
+  comparisonTable?: {
+    headers: string[];
+    rows: { label: string; values: string[] }[];
+  };
 }
 
 export const productDetails: Record<string, ProductDetail> = {
@@ -10003,5 +10007,253 @@ export const productDetails: Record<string, ProductDetail> = {
         ]
       }
     ]
+  },
+  "H Series": {
+    id: "H Series",
+    name: "H Series",
+    title: "Flagship Video Splicing Processor",
+    description: [
+      "The H Series Super Video Wall Controller Solution simplifies system architecture and reduces complexity, supporting up to 520 million pixels.",
+      "Traditional solutions require numerous LED control units and video wall splicing processors. The NovaStar H Series solution integrates these functions into a single system.",
+      "Rich Input/Output Cards On Demand:",
+      "Dual 4K Inputs for Ultimate Flexibility (H_2xHDMI2.0, H_2xDP1.2)",
+      "8K Ultra HD for a Visual Revolution (H_1xHDMI2.1+1xDP1.4)",
+      "4K@120Hz for Buttery-smooth Performance",
+      "ST 2110 & NDI Ready for Ultimate Flexibility",
+      "Professional Input Cards (H_1xST2110, H_1xNDI, H_4xfiber)",
+      "Enhanced Output Card (H_4xfiber sending card)"
+    ],
+    features: [],
+    specifications: [
+      {
+        category: "Max Loading Capacity",
+        specs: [
+          { label: "H2 (2U)", value: "26 million pixels (H_20xRJ45) / 52 million pixels (H_4 OPT Enhanced)" },
+          { label: "H5 (5U)", value: "39 million pixels (H_20xRJ45) / 78 million pixels (H_4 OPT Enhanced)" },
+          { label: "H9 (9U)", value: "65 million pixels (H_20xRJ45) / 130 million pixels (H9) / 260 million pixels (H9 Enhanced)" },
+          { label: "H15 (15U)", value: "130 million pixels (H15) / 208 million pixels (H15 Enhanced) / 260 million pixels (H15) / 416 million pixels (H15 Enhanced)" },
+          { label: "H20 (20U)", value: "260 million pixels (H_20xRJ45) / 520 million pixels (H_4 OPT Enhanced)" }
+        ]
+      },
+      {
+        category: "Input & Output Configuration",
+        specs: [
+          { label: "Max Output Dimensions", value: "Width: 2560px, Height: 2560px (Single video connector) / Width: 10752px, Height: 10752px (Single Ethernet port) / Width: 16384px, Height: 16384px (Single OPT port)" },
+          { label: "Max Input Cards", value: "H2: 4 / H5: 10 / H9: 15 / H15: 30 / H20: 40" },
+          { label: "Max Output Cards", value: "H2: 2 / H5: 3 / H9: 5 (10 Enhanced) / H15: 10 (16 Enhanced) / H20: 20" }
+        ]
+      },
+      {
+        category: "Processing Features",
+        specs: [
+          { label: "Irregular Mosaic", value: "Supported" },
+          { label: "Max Layers", value: "H2: 32 / H5: 48 / H9: 80 (160 Enhanced) / H15: 160 (160 Enhanced) / H20: 320" },
+          { label: "Max Presets", value: "2000 (Preset playlist playback supported)" },
+          { label: "Permission Management", value: "Supported" },
+          { label: "10bit and HDR", value: "Supported" },
+          { label: "Input/Output Monitoring", value: "Supported" }
+        ]
+      }
+    ],
+    comparisonTable: {
+      headers: ["Model", "H2", "H5", "H9", "H15", "H20"],
+      rows: [
+        { label: "Rack Unit", values: ["2U", "5U", "9U", "15U", "20U"] },
+        { label: "Max Loading Capacity (H_20xRJ45 sending card)", values: ["26 million pixels", "39 million pixels", "65 million pixels", "130 million pixels (H15)\n208 million pixels (H15 Enhanced)", "260 million pixels"] },
+        { label: "Max Loading Capacity (H_4 OPT Output Card Enhanced)", values: ["52 million pixels", "78 million pixels", "130 million pixels (H9)\n260 million pixels (H9 Enhanced)", "260 million pixels (H15)\n416 million pixels (H15 Enhanced)", "520 million pixels"] },
+        { label: "Max. Output", values: ["Max. width: 2560 pixels, Max. Height: 2560 pixels (Single video connector)\nMax. width: 10752 pixels, Max. Height: 10752 pixels (Single Ethernet port)\nMax. width: 16384 pixels, Max. Height: 16384 pixels (Single OPT port)", "-", "-", "-", "-"] },
+        { label: "Max. Input Cards", values: ["4", "10", "15", "30", "40"] },
+        { label: "Max. Output Cards", values: ["2", "3", "5 (H9)\n10 (H9 Enhanced)", "10 (H15)\n16 (H15 Enhanced)", "20"] },
+        { label: "Irregular Mosaic", values: ["√", "√", "√", "√", "√"] },
+        { label: "Max Layers", values: ["32 Layers", "48 Layers", "80 Layers(H9)\n160 Layers(H9 Enhanced)", "160 Layers(H15)\n160 Layers(H15 Enhanced)", "320 Layers"] },
+        { label: "Max. Presets", values: ["2000 (Preset playlist playback supported)", "-", "-", "-", "-"] },
+        { label: "Permission Management", values: ["√", "√", "√", "√", "√"] },
+        { label: "10bit and HDR", values: ["√", "√", "√", "√", "√"] },
+        { label: "Input and Output Monitoring (H_2xRJ45+1xHDMI1.3 preview card required)", values: ["√", "√", "√", "√", "√"] },
+        { label: "Optional Power Supply", values: ["-", "√", "√", "√", "√"] }
+      ]
+    }
+  },
+  "VX Pro Series": {
+    id: "VX Pro Series",
+    name: "VX Pro Series",
+    title: "LED Display Video Controller",
+    description: [
+      "The NovaStar VX Pro series provides a comprehensive set of powerful video processing and control capabilities.",
+      "Multiple Layers and Presets:",
+      "• VX2000 Pro supports 12 x 2K, 6 x DL, or 3 x 4K layers.",
+      "• VX400 Pro, VX600 Pro, VX1000 Pro supports 6 x 2K, or 1 x 4K + 2 x 2K layers.",
+      "• Entire series supports 256 presets.",
+      "More Advantages:",
+      "• Remote Control",
+      "• Independent Audio Connector",
+      "• Multi-language Menu Support (English, Español, Français)"
+    ],
+    features: [],
+    specifications: [
+      {
+        category: "General",
+        specs: [
+          { label: "Series Models", value: "VX400 Pro, VX600 Pro, VX1000 Pro, VX2000 Pro" },
+          { label: "Type", value: "All-in-One Controller" }
+        ]
+      }
+    ],
+    comparisonTable: {
+      headers: ["Device Model", "VX400 Pro", "VX600 Pro", "VX1000 Pro", "VX2000 Pro"],
+      rows: [
+        { label: "Loading Capacity", values: ["2.6 million pixels", "3.9 million pixels", "6.5 million pixels", "13 million pixels"] },
+        { label: "Max Width (pixels)", values: ["10240", "10240", "10240", "16384"] },
+        { label: "Max Height (pixels)", values: ["8192", "8192", "8192", "8192"] },
+        { label: "Layers", values: ["6 *2K×1K", "6 *2K×1K", "6 *2K×1K", "12 *2K×1K"] },
+        { label: "Input Connectors", values: [
+          "1x HDMI 2.0 (IN&LOOP)\n2x HDMI 1.3\n1x 3G-SDI (IN&LOOP)\n1x 10G OPT Port (OPT1)\n1x USB3.0",
+          "1x HDMI 2.0 (IN&LOOP)\n2x HDMI 1.3\n1x 3G-SDI (IN&LOOP)\n1x 10G OPT Port (OPT1)\n1x USB3.0",
+          "1x HDMI 2.0 (IN&LOOP)\n2x HDMI 1.3\n1x 3G-SDI (IN&LOOP)\n1x 10G OPT Port (OPT1)\n1x USB3.0",
+          "1x 12G-SDI(IN&LOOP)\n1x DP 1.2\n2x HDMI 2.0\n4x HDMI 1.3\n2x OPT\n1x USB3.0"
+        ] },
+        { label: "Output Connectors", values: [
+          "4x Ethernet Ports\n1x HDMI1.3\n1x HDMI 2.0 LOOP\n1x 3G-SDI LOOP\n2x OPT",
+          "6x Ethernet Ports\n1x HDMI1.3\n1x HDMI 2.0 LOOP\n1x 3G-SDI LOOP\n2x OPT",
+          "10x Ethernet Ports\n1x HDMI1.3\n1x HDMI 2.0 LOOP\n1x 3G-SDI LOOP\n2x OPT",
+          "20x Ethernet Ports\n1x HDMI1.3\n4x OPT\n1x 12G-SDI LOOP\n4x OPT"
+        ] },
+        { label: "Presets", values: ["256", "256", "256", "256"] },
+        { label: "Control Connectors", values: [
+          "2x Ethernet Port\n1x USB",
+          "2x Ethernet Port\n1x USB",
+          "2x Ethernet Port\n1x USB",
+          "2x Ethernet Port\n1x USB"
+        ] }
+      ]
+    }
+  },
+  "TB Series": {
+    id: "TB Series",
+    name: "TB Series",
+    title: "Taurus Series Multimedia Player",
+    description: [
+      "An upgraded multimedia player for full-color LED screens. Integrating playback and sending functions, it can be used for program release and LED screen control through various user terminals such as PC, mobile phone and Pad.",
+      "It supports connection to features such as safety and stability, simplicity and ease of use, and intelligent control, it can be widely applied in the fields of LED commercial display and smart cities, such as fixed screens, lamp post screens, chain store screens, digital signage, retail store screens, storefront screens, and shelf screens. cloud publishing and cloud O&M platforms, making it easy to achieve cross-regional cluster management of LED screens.",
+      "Supports USB drive plug and play, meeting various playback needs, and ensures playback security through multiple protection measures such as terminal authentication and playback verification.",
+      "Hardware Upgrade, Doubled Performance:",
+      "• Industrial-grade SoC Chip: Quad-core ARM processor, delivering high performance and low power consumption.",
+      "Powerful Control, Robust Decoding:",
+      "• Resolution Upgrade: Drives up to 2.3 million pixels (TB60) for high-quality displays.",
+      "• Frame-level Sync: Maintains frame-level synchronization even during complex playback."
+    ],
+    features: [],
+    specifications: [
+      {
+        category: "General",
+        specs: [
+          { label: "Series Models", value: "TB10 Plus, TB20 Plus, TB30, TB50, TB60" },
+          { label: "Type", value: "Multimedia Player" }
+        ]
+      }
+    ],
+    comparisonTable: {
+      headers: ["Model", "TB10 Plus", "TB20 Plus", "TB30", "TB50", "TB60"],
+      rows: [
+        { label: "Max. Loading Capacity", values: ["0.65 Million Pixels", "0.65 Million Pixels", "0.65 Million Pixels", "1.3 Million Pixels", "2.3 Million Pixels"] },
+        { label: "Max. Width & Height", values: [
+          "Normal Scenario: Max. Width 2048 or Max Height 2048\nUltra-wide screen: Max. Width 8192 or Max. Height 2048",
+          "Normal Scenario: Max. Width 2048 or Max Height 2048\nUltra-wide screen: Max. Width 8192 or Max. Height 2048",
+          "Max Width 4096 or Max Height 4096",
+          "Max Width 4096 or Max Height 4096",
+          "Max Width 4096 or Max Height 4096"
+        ] },
+        { label: "CPU", values: ["Quad-core A53@1.4GHz", "Quad-core A53@1.4GHz", "Quad-core A55@1.8GHz", "Quad-core A55@1.8GHz", "Quad-core A55@1.8GHz"] },
+        { label: "RAM+ROM", values: ["2GB+32GB", "2GB+32GB", "1GB+32GB", "1GB+32GB", "1GB+32GB"] },
+        { label: "Storage Expansion", values: ["USB Driver, can be expanded up to 128G", "USB Driver, can be expanded up to 128G", "USB Driver, can be expanded up to 128G", "USB Driver, can be expanded up to 128G", "USB Driver, can be expanded up to 128G"] },
+        { label: "Video Decoding", values: ["4K@60Hz", "4K@60Hz", "4K@60Hz", "4K@60Hz", "4K@60Hz"] },
+        { label: "OS", values: ["Android 10.0", "Android 10.0", "Android 11.0", "Android 11.0", "Android 11.0"] },
+        { label: "Playback", values: [
+          "1x 4K\nor 2x 1080p\nor 4x 720p\nor 4x 480p\nor 20x 360p",
+          "1x 4K\nor 2x 1080p\nor 4x 720p\nor 4x 480p\nor 20x 360p",
+          "1x 4K\nor 2x 1080p\nor 5x 720p\nor 6x 480p\nor 6x 360p",
+          "1x 4K\nor 2x 1080p\nor 5x 720p\nor 6x 480p\nor 6x 360p",
+          "1x 4K\nor 2x 1080p\nor 5x 720p\nor 6x 480p\nor 6x 360p"
+        ] },
+        { label: "Multi-device Synchronous Playback", values: ["√", "√", "√", "√", "√"] },
+        { label: "Synchronous and Asynchronous Switching", values: ["x", "√", "x", "√", "√"] },
+        { label: "HDMI Cascading Playback", values: ["x", "x", "x", "√(1080P, Max. up to 10 devices)", "√(1080P, Max. up to 10 devices)"] },
+        { label: "Sensor Access", values: ["○", "○", "○", "○", "○"] },
+        { label: "Audio Output", values: ["√", "√", "√", "√", "√"] },
+        { label: "USB Driver Display", values: ["√(USB2.0)", "√(USB2.0)", "√(USB3.0)", "√(USB3.0)", "√(USB3.0)"] },
+        { label: "Wired Network", values: ["100 Mbps", "100 Mbps", "1 Gbps", "1 Gbps", "1 Gbps"] },
+        { label: "WI-FI", values: ["2.4GHz Wi-Fi, AP+STA Dual Mode", "2.4GHz Wi-Fi, AP+STA Dual Mode", "2.4GHz Wi-Fi, AP+STA Dual Mode", "2.4GHz Wi-Fi, AP+STA Dual Mode", "2.4GHz Wi-Fi, AP+STA Dual Mode"] },
+        { label: "4G Network", values: ["○", "○", "○", "○", "○"] },
+        { label: "Certifications", values: ["√", "√", "√", "√", "√"] },
+        { label: "VNNOX Care / VNNOX Media", values: ["√", "√", "√", "√", "√"] },
+        { label: "NovaStar SDK", values: ["√", "√", "√", "√", "√"] },
+        { label: "Bare Product", values: ["x", "x", "√(T30)", "√(T50)", "x"] }
+      ]
+    }
+  },
+  "TU Series": {
+    id: "TU Series",
+    name: "TU Series",
+    title: "Intelligent Control Solution",
+    description: [
+      "The NovaStar TU Series is an Intelligent Control Solution that brings Smart TV Simplicity to LED Display Solutions.",
+      "Intelligent Configuration, Quick and Effective:",
+      "• 1 Mobile Phone, 1 APP, 10 Minutes to quickly complete configuration.",
+      "• Scan the Code with Your Phone to Receive the Configuration File.",
+      "• 5 Seconds: Screen Connection via Photo Capture using NovaStar's self-developed algorithm.",
+      "• Eliminates Bright & Darkness Lines with Full-screen Accurate Calibration via phone camera."
+    ],
+    features: [],
+    specifications: [
+      {
+        category: "General",
+        specs: [
+          { label: "Series Models", value: "TU15 Pro, TU20 Pro, TU4K Pro" },
+          { label: "Type", value: "Intelligent Control Solution" }
+        ]
+      }
+    ],
+    comparisonTable: {
+      headers: ["Product Model", "TU15 Pro", "TU20 Pro", "TU4K Pro"],
+      rows: [
+        { label: "Dimensions", values: ["211.7mm x 185.0mm x 50.6mm", "211.7mm x 185.0mm x 50.6mm", "445.0mm x 383.0mm x 49.9mm"] },
+        { label: "Input Voltage", values: ["100-240V~, 50/60Hz, 3A Max", "100-240V~, 50/60Hz, 3A Max", "100-240V~, 50/60Hz, 2.5A Max"] },
+        { label: "Standby Power Consumption", values: ["Overall power consumption ≤0.5W", "Overall power consumption ≤0.5W", "Overall power consumption ≤0.5W"] },
+        { label: "Loading Capacity", values: ["2.6 Million", "3.9 Million", "13 Million"] },
+        { label: "Max. Width & Height", values: [
+          "Max. Width 4096 pixels\nMax. Height 1920 pixels",
+          "Max. Width 4096 pixels\nMax. Height 1920 pixels",
+          "Max. Width 16384 pixels\nMax. Height 8192 pixels"
+        ] },
+        { label: "Android", values: ["Android 11", "Android 11", "Android 13"] },
+        { label: "Wi-Fi", values: ["Wi-Fi 6 (AP); Wi-Fi 5 (Station)", "Wi-Fi 6 (AP); Wi-Fi 5 (Station)", "Wi-Fi 6 (AP); Wi-Fi 5 (Station)"] },
+        { label: "Memory Space", values: ["4GB/32GB", "4GB/32GB", "8GB/128GB"] },
+        { label: "Input Ports", values: ["2xHDMI1.3; 3xUSB2.0", "2xHDMI1.3; 3xUSB2.0", "2xHDMI2.0; 1xHDMI1.3; 2xUSB2.0; 1xUSB3.0"] },
+        { label: "Output Ports", values: [
+          "4xRJ45; 1xHDMI1.3;\n1x3.5mm Audio Output; 1xSPDIF",
+          "6xRJ45; 1xHDMI1.3;\n1x3.5mm Audio Output; 1xSPDIF",
+          "20xRJ45; 2x10G OPT; 1xHDMI1.3;\n1x3.5mm Audio Output; 1xSPDIF;\n1x Phoenix Contact Audio Output"
+        ] },
+        { label: "Control Ports", values: ["1xRJ45; 1xRS232; 1xSensor", "1xRJ45; 1xRS232; 1xSensor", "1xRJ45; 1xRS232; 2xSensor"] },
+        { label: "Intelligent Playback Control", values: ["Remote, APP, USB Drive", "Remote, APP, USB Drive", "Remote, APP, USB Drive"] },
+        { label: "Wireless Mirroring", values: [
+          "Support Type-C/ wireless USB adaptor,\nSupport Windows / iOS / Android multiple platform mirroring",
+          "Support Type-C/ wireless USB adaptor,\nSupport Windows / iOS / Android multiple platform mirroring",
+          "Support Type-C/ wireless USB adaptor,\nSupport Windows / iOS / Android multiple platform mirroring"
+        ] },
+        { label: "Whiteboard", values: ["Support (combined with infrared frame)", "Support (combined with infrared frame)", "Support (combined with infrared frame)"] },
+        { label: "Intelligent Voice Control", values: ["Support", "Support", "Support"] },
+        { label: "Free Scaling", values: ["Support", "Support", "Support"] },
+        { label: "Effect Adjusting", values: [
+          "Support (Standard, Soft, Theater, Meeting)",
+          "Support (Standard, Soft, Theater, Meeting)",
+          "Support (Standard, Meeting, Vivid, Skin)"
+        ] },
+        { label: "One-click Eye Protection", values: ["Support", "Support", "Support"] },
+        { label: "Launcher Customization", values: ["Support", "Support", "Support"] },
+        { label: "Boot Animation Customization", values: ["Support", "Support", "Support"] },
+        { label: "Screen Mirroring Activation", values: ["Default to activate full screen", "Default to activate full screen", "Default to activate 9 split screen"] }
+      ]
+    }
   }
 };
