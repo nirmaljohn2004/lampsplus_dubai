@@ -6,6 +6,7 @@ import { ArrowUpRight, ArrowRight } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 
 const featuredProjects = [
+  { name: "Dubai Police GHIATH", category: "Government & Security", location: "Dubai", image: "/images/proj_dubai_police.jpg" },
   { name: "ADNOC Headquarters", category: "Government", location: "Abu Dhabi", image: "/images/proj_adnoc_1774784409133.webp" },
   { name: "Dubai Cricket Stadium", category: "Sports Venue", location: "Dubai", image: "/images/proj_cricket_1774784549601.webp" },
   { name: "Wafi Mall", category: "Retail & Leisure", location: "Dubai", image: "/images/proj_wafi_1774784593202.webp" },
