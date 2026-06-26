@@ -1,43 +1,34 @@
 import Image from 'next/image';
 
 const logos = [
-  "Screenshot 2026-06-15 130527.png", "Screenshot 2026-06-15 130536.png", "Screenshot 2026-06-15 130544.png",
-  "Screenshot 2026-06-15 130553.png", "Screenshot 2026-06-15 130558.png", "Screenshot 2026-06-15 130607.png",
-  "Screenshot 2026-06-15 130620.png", "Screenshot 2026-06-15 130625.png", "Screenshot 2026-06-15 130633.png",
-  "Screenshot 2026-06-15 130640.png", "Screenshot 2026-06-15 130646.png", "Screenshot 2026-06-15 130652.png",
-  "Screenshot 2026-06-15 130703.png", "Screenshot 2026-06-15 130709.png", "Screenshot 2026-06-15 130719.png",
-  "Screenshot 2026-06-15 130733.png", "Screenshot 2026-06-15 130742.png", "Screenshot 2026-06-15 130752.png",
-  "Screenshot 2026-06-15 130805.png", "Screenshot 2026-06-15 130811.png", "Screenshot 2026-06-15 130820.png",
-  "Screenshot 2026-06-15 130827.png", "Screenshot 2026-06-15 130837.png", "Screenshot 2026-06-15 130842.png",
-  "Screenshot 2026-06-15 130850.png", "Screenshot 2026-06-15 130858.png", "Screenshot 2026-06-15 130906.png",
-  "Screenshot 2026-06-15 130913.png", "Screenshot 2026-06-15 130928.png", "Screenshot 2026-06-15 130935.png",
-  "Screenshot 2026-06-15 130955.png", "Screenshot 2026-06-15 131001.png", "Screenshot 2026-06-15 131006.png",
-  "Screenshot 2026-06-15 131015.png", "Screenshot 2026-06-15 131026.png", "Screenshot 2026-06-15 131034.png",
-  "Screenshot 2026-06-15 131039.png", "Screenshot 2026-06-15 131044.png", "Screenshot 2026-06-15 131049.png",
-  "Screenshot 2026-06-15 131054.png", "Screenshot 2026-06-15 131102.png", "Screenshot 2026-06-15 131112.png",
-  "Screenshot 2026-06-15 131117.png", "Screenshot 2026-06-15 131122.png", "Screenshot 2026-06-15 131127.png",
-  "Screenshot 2026-06-15 131130.png", "Screenshot 2026-06-15 131134.png", "Screenshot 2026-06-15 131141.png",
-  "Screenshot 2026-06-15 131151.png", "Screenshot 2026-06-15 131156.png", "Screenshot 2026-06-15 131202.png",
-  "Screenshot 2026-06-15 131212.png", "Screenshot 2026-06-15 131220.png", "Screenshot 2026-06-15 131232.png",
-  "Screenshot 2026-06-15 131242.png", "Screenshot 2026-06-15 131248.png", "Screenshot 2026-06-15 131255.png",
-  "Screenshot 2026-06-15 131300.png", "Screenshot 2026-06-15 131306.png", "Screenshot 2026-06-15 131310.png",
-  "Screenshot 2026-06-15 131320.png", "Screenshot 2026-06-15 131331.png", "Screenshot 2026-06-15 131338.png",
-  "Screenshot 2026-06-15 131346.png", "Screenshot 2026-06-15 131403.png", "Screenshot 2026-06-15 131408.png",
-  "Screenshot 2026-06-15 131413.png", "Screenshot 2026-06-15 131420.png", "Screenshot 2026-06-15 131427.png",
-  "Screenshot 2026-06-15 131437.png", "Screenshot 2026-06-15 131443.png", "Screenshot 2026-06-15 131452.png"
+  "WhatsApp Image 2026-06-24 at 4.20.08 PM (1).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.08 PM.jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.09 PM (1).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.09 PM (2).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.09 PM (3).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.09 PM.jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.10 PM (1).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.10 PM (2).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.10 PM.jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.11 PM (1).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.11 PM (2).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.11 PM (3).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.11 PM.jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.12 PM (1).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.12 PM (2).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.12 PM.jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.13 PM (1).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.13 PM (2).jpeg",
+  "WhatsApp Image 2026-06-24 at 4.20.13 PM.jpeg"
 ];
 
 export function TrustedBrands() {
-  const row1 = logos.slice(0, 18);
-  const row2 = logos.slice(18, 36);
-  const row3 = logos.slice(36, 54);
-  const row4 = logos.slice(54, 72);
+  const row1 = logos.slice(0, 10);
+  const row2 = logos.slice(10, 19);
 
   const rows = [
-    { items: row1, duration: 40, direction: "left" },
-    { items: row2, duration: 45, direction: "right" },
-    { items: row3, duration: 35, direction: "left" },
-    { items: row4, duration: 50, direction: "right" }
+    { items: row1, duration: 30, direction: "left" },
+    { items: row2, duration: 35, direction: "right" }
   ];
 
   return (
