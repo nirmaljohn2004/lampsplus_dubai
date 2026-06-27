@@ -88,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${playfairDisplay.variable} ${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`relative ${playfairDisplay.variable} ${dmSans.variable} ${dmMono.variable}`}>
       <head>
         {/* Preconnect for Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -229,7 +229,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased relative">
+      <body className="font-sans antialiased">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-white focus:rounded">
           Skip to main content
         </a>

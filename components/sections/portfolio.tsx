@@ -6,14 +6,10 @@ import { ArrowUpRight, ArrowRight } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 
 const featuredProjects = [
-  { name: "Dubai Police GHIATH", category: "Government & Security", location: "Dubai", image: "/images/proj_dubai_police.jpg" },
-  { name: "ADNOC Headquarters", category: "Government", location: "Abu Dhabi", image: "/images/proj_adnoc_1774784409133.webp" },
-  { name: "Dubai Cricket Stadium", category: "Sports Venue", location: "Dubai", image: "/images/proj_cricket_1774784549601.webp" },
-  { name: "Wafi Mall", category: "Retail & Leisure", location: "Dubai", image: "/images/proj_wafi_1774784593202.webp" },
-  { name: "Rove Hotels Group", category: "Hospitality", location: "Dubai", image: "/images/proj_rove.webp" },
-  { name: "Expo 2020 Dubai", category: "Global Event", location: "Dubai", image: "/images/proj_expo.webp" },
-  { name: "GEMS Schools UAE", category: "Education", location: "Multiple", image: "/images/proj_gems.webp" },
-  { name: "Parliament Palace", category: "Government", location: "Abu Dhabi", image: "/images/proj_parliament.webp" },
+  { name: "Orimi Bolivard Nama", category: "Commercial & Residential", location: "Oman", image: "/images/proj_orimi_bolivard.png" },
+  { name: "Sobha Construction", category: "High-End Construction", location: "UAE", image: "/images/proj_sobha_construction.png" },
+  { name: "EGA", category: "Industrial", location: "UAE", image: "/images/proj_ega.png" },
+  { name: "Project Menansco", category: "Commercial", location: "UAE", image: "/images/proj_menansco.png" },
 ]
 
 export function PortfolioSection() {

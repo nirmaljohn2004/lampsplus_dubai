@@ -104,7 +104,7 @@ export function ContactSection() {
 
     const gmailUrl =
       `https://mail.google.com/mail/?view=cm&fs=1` +
-      `&to=${encodeURIComponent('sales@az-tech.ae')}` +
+      `&to=${encodeURIComponent('sales@lampsplusdisplay.com')}` +
       `&su=${encodeURIComponent(subject)}` +
       `&body=${encodeURIComponent(body)}`
 
@@ -217,12 +217,12 @@ export function ContactSection() {
                   </span>
                 </a>
 
-                <a href="mailto:sales@az-tech.ae" className="flex items-center gap-4 group">
+                <a href="mailto:sales@lampsplusdisplay.com" className="flex items-center gap-4 group">
                   <div className="w-9 h-9 rounded-full bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#E60000]/10 group-hover:border-[#E60000]/30 transition-all">
                     <Mail className="w-4 h-4 text-white/40 group-hover:text-[#E60000] transition-colors" />
                   </div>
                   <span className="font-sans text-[0.9rem] text-white/60 group-hover:text-white/90 transition-colors">
-                    sales@az-tech.ae
+                    sales@lampsplusdisplay.com
                   </span>
                 </a>
 
@@ -286,7 +286,7 @@ export function ContactSection() {
                 <div>
                   <h3 className="font-serif text-[1.6rem] font-normal text-white mb-3">Gmail Opened!</h3>
                   <p className="font-sans text-[0.95rem] text-white/60 leading-relaxed max-w-md">
-                    A Gmail compose window has opened with your enquiry pre-filled. Just hit <strong className="text-white">Send</strong> and our team at <strong className="text-white">sales@az-tech.ae</strong> will get back to you within 24 hours.
+                    A Gmail compose window has opened with your enquiry pre-filled. Just hit <strong className="text-white">Send</strong> and our team at <strong className="text-white">sales@lampsplusdisplay.com</strong> will get back to you within 24 hours.
                   </p>
                 </div>
                 <a

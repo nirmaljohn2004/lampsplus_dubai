@@ -14,7 +14,7 @@ import { Footer } from "@/components/sections/footer"
 
 export default function Home() {
   return (
-    <main id="main" role="main" className="min-h-screen bg-[var(--bg-primary)]">
+    <main id="main" role="main" className="relative min-h-screen bg-[var(--bg-primary)]">
       <Navigation />
       <HeroSection />
       {/* <ClientMarquee /> */}
