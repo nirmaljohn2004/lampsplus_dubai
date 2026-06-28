@@ -10,6 +10,141 @@ import { productDetails } from "@/lib/product-data"
 
 const categories = [
   {
+    id: "led-displays",
+    name: "LED Displays",
+    description: "High-brightness and fine-pitch LED displays for indoor and outdoor use.",
+    subcategories: [
+      {
+        id: "indoor-fine-pixel",
+        name: "Indoor Fine Pixel",
+        products: [
+          { name: "LP-SIA1.2-CK", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.2", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA4-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P4", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA3-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P3", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA2.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2.5", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA2-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.8-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.8", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.5", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-GIA3.91-SE", subtitle: "Lamps Plus Indoor Front Maintenance fixed screen LED_P3.91", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.5-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.2-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA0.9-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.5-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.2-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA0.9-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.8-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.5-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.2-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA0.9-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.5-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-SIA1.2-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-MIA108-CC", subtitle: "Commercial All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-MIA163-CC", subtitle: "Commercial All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-MIA135-CC", subtitle: "Commercial All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-MIA135-CF", subtitle: "COB Foldable All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
+        ]
+      },
+      {
+        id: "indoor-fixed",
+        name: "Indoor Fixed",
+        products: [
+          { name: "LP-GIA4.81-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-GIA3.91-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-GIA2.97-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-GIA2.61-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
+          { name: "LP-GIA1.95-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
+        ]
+      },
+      {
+        id: "outdoor-fixed",
+        name: "Outdoor Fixed",
+        products: [
+          { name: "LP-GOA10-PH", subtitle: "Lamps Plus outdoor 960x960 front and rear maintenance fixed screen", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA10-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA8-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA6-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA5-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA4.81-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA3.91-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-GOA2.97-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
+        ]
+      },
+
+
+      {
+        id: "stadium",
+        name: "Stadium",
+        products: [
+          { name: "LP-VOA10-EH", subtitle: "Lamps Plus Outdoor Stadium LED", image: "/images/led_stadium.png" },
+        ]
+      },
+      {
+        id: "commercial",
+        name: "Commercial",
+        products: [
+          { name: "LP-MIA135-AC", subtitle: "Lamps Plus Commercial All-In-One LED", image: "/images/led_conference.png" },
+        ]
+      },
+      {
+        id: "conference-all-in-one",
+        name: "Conference All-In-One",
+        products: [
+          { name: "LP-MIA216-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
+          { name: "LP-MIA163-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
+          { name: "LP-MIA135-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
+          { name: "LP-MIA108-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
+        ]
+      },
+      {
+        id: "led-module",
+        name: "LED Module",
+        products: [
+          { name: "LP-EOA10S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EOA8S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EOA6S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EOA5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EOA4S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EOA3S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EOA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EIA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EIA2S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EIA1.8S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EIA1.2S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+          { name: "LP-EIA1.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
+        ]
+      },
+      {
+        id: "rental-led-display",
+        name: "Rental LED Display",
+        products: [
+          { name: "LP-RIA2.61-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA1.95-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA3.91-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.97-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-ROA4.81-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-ROA3.91-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-RIA1.95-RF", subtitle: "Lamps Plus Creative Flexible Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-ROA3.91-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-ROA2.97-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-RIA3.91-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.97-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.61-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA1.95-RE-G-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA3.91-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.97-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.61-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA1.95-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-ROA4.81-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-ROA3.91-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
+          { name: "LP-RIA3.91-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.97-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA2.61-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+          { name: "LP-RIA1.95-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
+        ]
+      }
+    ]
+  },
+  {
     id: "control",
     name: "Control",
     description: "Advanced control solutions for seamless operation and monitoring.",
@@ -187,141 +322,6 @@ const categories = [
         products: [
           { name: "LP-AI-W", subtitle: "USB Wi-Fi dongle", image: "/images/lcd_digital_signage_others_wifi.png" },
           { name: "LP-VM10-SAI100", subtitle: "Lamps Plus 10.1\" Wall-mounted Digital Signage", image: "/images/lcd_digital_signage_others_10inch.png" },
-        ]
-      }
-    ]
-  },
-  {
-    id: "led-displays",
-    name: "LED Displays",
-    description: "High-brightness and fine-pitch LED displays for indoor and outdoor use.",
-    subcategories: [
-      {
-        id: "indoor-fine-pixel",
-        name: "Indoor Fine Pixel",
-        products: [
-          { name: "LP-SIA1.2-CK", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.2", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA4-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P4", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA3-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P3", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA2.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2.5", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA2-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P2", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.8-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.8", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.5-SC", subtitle: "Lamps Plus indoor 640x480 Front Maintenance fixed screen LED_P1.5", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-GIA3.91-SE", subtitle: "Lamps Plus Indoor Front Maintenance fixed screen LED_P3.91", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.5-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.2-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA0.9-AH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.5-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.2-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA0.9-CH", subtitle: "Flip COB Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.8-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.5-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.2-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA0.9-SS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.5-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-SIA1.2-LS", subtitle: "Indoor Fine Pixel Pitch LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-MIA108-CC", subtitle: "Commercial All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-MIA163-CC", subtitle: "Commercial All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-MIA135-CC", subtitle: "Commercial All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-MIA135-CF", subtitle: "COB Foldable All-In-One LED", image: "/images/premium_fine_pixel_led.png" },
-        ]
-      },
-      {
-        id: "indoor-fixed",
-        name: "Indoor Fixed",
-        products: [
-          { name: "LP-GIA4.81-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-GIA3.91-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-GIA2.97-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-GIA2.61-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
-          { name: "LP-GIA1.95-SH", subtitle: "Lamps Plus General Indoor Fixed LED", image: "/images/premium_fine_pixel_led.png" },
-        ]
-      },
-      {
-        id: "outdoor-fixed",
-        name: "Outdoor Fixed",
-        products: [
-          { name: "LP-GOA10-PH", subtitle: "Lamps Plus outdoor 960x960 front and rear maintenance fixed screen", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA10-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA8-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA6-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA5-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA4.81-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA3.91-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-GOA2.97-PH", subtitle: "Lamps Plus General Outdoor Fixed LED", image: "/images/clean_outdoor_led.png" },
-        ]
-      },
-
-
-      {
-        id: "stadium",
-        name: "Stadium",
-        products: [
-          { name: "LP-VOA10-EH", subtitle: "Lamps Plus Outdoor Stadium LED", image: "/images/led_stadium.png" },
-        ]
-      },
-      {
-        id: "commercial",
-        name: "Commercial",
-        products: [
-          { name: "LP-MIA135-AC", subtitle: "Lamps Plus Commercial All-In-One LED", image: "/images/led_conference.png" },
-        ]
-      },
-      {
-        id: "conference-all-in-one",
-        name: "Conference All-In-One",
-        products: [
-          { name: "LP-MIA216-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
-          { name: "LP-MIA163-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
-          { name: "LP-MIA135-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
-          { name: "LP-MIA108-EH", subtitle: "Lamps Plus Indoor ALL-In-One LED", image: "/images/led_conference.png" },
-        ]
-      },
-      {
-        id: "led-module",
-        name: "LED Module",
-        products: [
-          { name: "LP-EOA10S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EOA8S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EOA6S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EOA5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EOA4S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EOA3S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EOA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EIA2.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EIA2S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EIA1.8S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EIA1.2S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-          { name: "LP-EIA1.5S-C", subtitle: "Lamps Plus LED Module", image: "/images/premium_led_module.png" },
-        ]
-      },
-      {
-        id: "rental-led-display",
-        name: "Rental LED Display",
-        products: [
-          { name: "LP-RIA2.61-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA1.95-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA3.91-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.97-SH", subtitle: "Lamps Plus Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-ROA4.81-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-ROA3.91-MH", subtitle: "Lamps Plus Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-RIA1.95-RF", subtitle: "Lamps Plus Creative Flexible Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-ROA3.91-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-ROA2.97-REL-V2", subtitle: "Lamps Plus Ultimate Convenience Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-RIA3.91-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.97-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.61-RE-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA1.95-RE-G-V2", subtitle: "Lamps Plus Ultimate Convenience Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA3.91-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.97-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.61-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA1.95-RC", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-ROA4.81-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-ROA3.91-REL", subtitle: "Lamps Plus General Outdoor Rental LED", image: "/images/clean_outdoor_led.png" },
-          { name: "LP-RIA3.91-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.97-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA2.61-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
-          { name: "LP-RIA1.95-RE", subtitle: "Lamps Plus General Indoor Rental LED", image: "/images/led_indoor_rental.png" },
         ]
       }
     ]
@@ -508,7 +508,7 @@ export function ProductsSection() {
                         className="absolute inset-0 w-full h-full object-contain transition-transform duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105"
                         width={600} 
                         height={337}
-                        priority={idx < 4}
+                        priority
                       />
                       {/* Elegant dark gradient overlay to frame the image */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/10 to-transparent opacity-80" />

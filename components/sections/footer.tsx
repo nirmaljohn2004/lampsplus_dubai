@@ -2,25 +2,23 @@
 import { Phone, Linkedin, Instagram, Facebook } from "lucide-react"
 
 const products = [
-  "HD LED Display",
-  "Indoor LED Display",
-  "Outdoor DIP LED",
-  "Outdoor SMD LED",
-  "Transparent Glass LED",
-  "Poster LED Display",
-  "Floor LED Display",
-  "Spherical LED Display",
+  { label: "LED Displays", href: "/?category=led-displays#products" },
+  { label: "Control", href: "/?category=control#products" },
+  { label: "LCD Video Walls", href: "/?category=lcd-video-walls#products" },
+  { label: "LCD Digital Signage", href: "/?category=lcd-digital-signage#products" },
 ]
 
 const solutions = [
-  "Retail & Malls",
-  "Corporate & Office",
-  "Hospitality & Hotels",
-  "Healthcare",
-  "Education",
-  "Government",
-  "Events & Exhibitions",
-  "Sports & Stadiums",
+  { label: "Retail & Malls", href: "/#solutions" },
+  { label: "Corporate", href: "/#solutions" },
+  { label: "Hospitality", href: "/#solutions" },
+  { label: "Healthcare", href: "/#solutions" },
+  { label: "Education", href: "/#solutions" },
+  { label: "Government", href: "/#solutions" },
+  { label: "Events", href: "/#solutions" },
+  { label: "Sports", href: "/#solutions" },
+  { label: "Conference Room", href: "/#solutions" },
+  { label: "Monitoring Center", href: "/#solutions" },
 ]
 
 const company = [
@@ -90,9 +88,9 @@ export function Footer() {
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {products.map((product) => (
-                  <li key={product}>
-                    <a href="/#products" className="font-sans text-[0.85rem] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors">
-                      {product}
+                  <li key={product.label}>
+                    <a href={product.href} className="font-sans text-[0.85rem] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors">
+                      {product.label}
                     </a>
                   </li>
                 ))}
@@ -111,9 +109,9 @@ export function Footer() {
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {solutions.map((solution) => (
-                  <li key={solution}>
-                    <a href="/#solutions" className="font-sans text-[0.85rem] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors">
-                      {solution}
+                  <li key={solution.label}>
+                    <a href={solution.href} className="font-sans text-[0.85rem] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors">
+                      {solution.label}
                     </a>
                   </li>
                 ))}
